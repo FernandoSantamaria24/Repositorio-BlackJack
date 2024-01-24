@@ -3,7 +3,8 @@
 #include<iostream>
 class Mano {
 private:
-	Carta* cartas[];
+	Carta* cartas[9];
+	int cant;
 public:
 	Mano();
 	~Mano();
