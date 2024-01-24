@@ -21,7 +21,7 @@ void Mano::agregarCarta(Mazo* m){
 		std::cout << "Ya no se pueden pedir cartas (limite completado)\n";
 	}
 }
-//Limpia la mano para que el jugador pueda volvera a jugar otra partida
+//Limpia la mano para que el jugador pueda volver a jugar otra partida
 void Mano::limpiar(){
 	for (int i = 0; i < 9; i++)
 	{

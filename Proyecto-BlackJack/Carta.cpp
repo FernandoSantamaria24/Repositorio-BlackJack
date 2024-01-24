@@ -20,4 +20,10 @@ int Carta::getPalo()
 
 void Carta::voltear()
 {
+	if (bocaAbajo == true) {
+		std::cout << "Esta carta esta volteada.";
+	}
+	else {
+		std::cout << valor << palo;
+	}
 }

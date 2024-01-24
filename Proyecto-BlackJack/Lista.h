@@ -8,8 +8,9 @@ public:
 	Lista();
 	~Lista();
 	Nodo* getInicio();
-	void insertarNodo(JugadorGenerico*);
-	void borrarNodo(Nodo*);
+	void insertarNodoJugador(JugadorGenerico*);
+	Nodo* buscaPersona(JugadorGenerico*);
+	void borrarNodoJugador(JugadorGenerico*);
 	bool listaVacia();
 };
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "Carta.h"
+#include"Mazo.h"
 #include<iostream>
 class Mano {
 private:
