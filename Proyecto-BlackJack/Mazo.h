@@ -4,7 +4,7 @@
 
 class Mazo {
 private:
-	Carta* carta[];
+	Carta* carta[52];
 public:
 	Mazo();
 	~Mazo();

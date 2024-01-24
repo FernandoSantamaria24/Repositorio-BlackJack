@@ -1,8 +1,8 @@
 #include "Mano.h"
 #include "Mazo.h"
+//Método constructor sin parámetros 
+Mano::Mano(){
 
-Mano::Mano()
-{
 }
 //Borra todas las cartas que se encuentran dentro de la mano de cada jugador
 //Impidiendo que ocurra un memory leak por parte de Mano
