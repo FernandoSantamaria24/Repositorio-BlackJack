@@ -8,7 +8,7 @@ private:
 public:
 	Mano();
 	~Mano();
-	void agregarCarta(Mano*);
+	void agregarCarta(Mazo*);
 	void limpiar();
 	int getPuntos();
 };
