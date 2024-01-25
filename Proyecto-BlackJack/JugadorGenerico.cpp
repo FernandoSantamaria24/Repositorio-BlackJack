@@ -14,10 +14,10 @@ JugadorGenerico::~JugadorGenerico()
 
 Carta* JugadorGenerico::pedirCarta()
 {
-	return nullptr;
+	return 0;
 }
 
 bool JugadorGenerico::sePaso()
 {
-	return false;
+	return 0;
 }
