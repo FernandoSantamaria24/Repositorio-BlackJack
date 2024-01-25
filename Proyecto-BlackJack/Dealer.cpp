@@ -1,18 +1,14 @@
 #include "Dealer.h"
-
-Dealer::Dealer(std::string nombre, Mano* manoDealer) : JugadorGenerico(nombre, manoDealer)
-{
+//Constructor con parámetros
+Dealer::Dealer(std::string nombre, Mano* manoDealer) : JugadorGenerico(nombre, manoDealer){}
+//Destructor de la clase Dealer
+Dealer::~Dealer(){
+	delete[] mano;
 }
 
-Dealer::~Dealer()
-{
-}
-
-Carta* Dealer::pedirCarta()
-{
+Carta* Dealer::pedirCarta(){
 	return nullptr;
 }
 
-void Dealer::volteaSegunda()
-{
+void Dealer::volteaSegunda(){
 }
