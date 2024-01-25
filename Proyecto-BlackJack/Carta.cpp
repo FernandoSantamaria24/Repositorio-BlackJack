@@ -18,6 +18,16 @@ int Carta::getPalo()
 	return palo;
 }
 
+void Carta::setValor(int n){
+	if (palo==0) {
+		std::cout << "El valor de su carta  'A' a sido cambiado por: " << n;
+		valor = n;
+	}
+	else {
+		std::cout << "El palo de su carta no coincide con un As";
+	}
+}
+
 void Carta::voltear()
 {
 	if (bocaAbajo == true) {

@@ -11,5 +11,6 @@ public:
 	~Carta();
 	int getValor();
 	int getPalo();
+	void setValor(int);
 	void voltear(); //falta desarrollar
 };
