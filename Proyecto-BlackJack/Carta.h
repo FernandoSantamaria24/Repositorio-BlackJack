@@ -12,7 +12,9 @@ public:
 	~Carta();
 	int getValor();
 	int getPalo();
+	bool getBocaAbajo();
 	void setValor(int);
 	void setPalo(int);
+	void setBocaAbajo(bool);
 	void voltear(); //falta desarrollar
 };

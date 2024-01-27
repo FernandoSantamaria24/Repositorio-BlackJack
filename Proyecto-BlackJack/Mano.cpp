@@ -10,14 +10,16 @@ Mano::Mano(){
 //Borra todas las cartas que se encuentran dentro de la mano de cada jugador
 //Impidiendo que ocurra un memory leak por parte de Mano
 Mano::~Mano(){
-	delete[] cartas;
+	for (int i = 0; i < 9; i++)
+	{
+		delete cartas[i];
+	}
 }
 //Agrega una carta a la mano del jugador seleccionado
 //Solo se pueden agregar una cantidad de 10 cartas a la mano de cada jugador
 void Mano::agregarCarta(Mazo* m){
 	if (cant<=9) {
-		cartas[cant++] = m->tomarCarta();
-		std::cout << "Carta tomada\n";
+		this->cartas[cant++] = m->tomarCarta();
 	}
 	else {
 		std::cout << "Ya no se pueden pedir cartas (limite completado)\n";

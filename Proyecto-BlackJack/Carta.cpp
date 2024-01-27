@@ -25,12 +25,21 @@ int Carta::getPalo()
 	return palo;
 }
 
+bool Carta::getBocaAbajo()
+{
+	return bocaAbajo;
+}
+
 void Carta::setValor(int v){
 	valor = v;
 }
 
 void Carta::setPalo(int p){
 	palo = p;
+}
+
+void Carta::setBocaAbajo(bool b){
+	bocaAbajo = b;
 }
 
 void Carta::voltear()
