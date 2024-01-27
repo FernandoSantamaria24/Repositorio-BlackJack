@@ -1,10 +1,11 @@
 #pragma once
 #include "Carta.h"
 #include<iostream>
+#define tam 52
 
 class Mazo {
 private:
-	Carta* carta[52];
+	Carta* carta[tam];
 public:
 	Mazo();
 	~Mazo();

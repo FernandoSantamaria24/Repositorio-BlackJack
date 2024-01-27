@@ -2,27 +2,65 @@
 #include "Carta.h"
 #include "Mano.h"
 
-Mazo::Mazo()
-{
+Mazo::Mazo(){
+    for (int i = 0; i < tam; i++)
+    {
+        carta[i] = new Carta();
+    }
+}
+//Destructor de clase Mazo
+Mazo::~Mazo(){
+    for (int i = 0; i < tam; i++) {
+
+        delete carta[i];
+    }
 }
 
-Mazo::~Mazo()
-{
-	delete[] carta;
+
+void Mazo::inicializador(){
+    int pos = 0;
+
+    for (int i = 1; i <= 13; i++) {
+
+        for (int j = 1; j <= 4; j++) {
+
+            carta[pos]->setValor(i);
+            carta[pos]->setPalo(j);
+            carta[pos]->voltear();
+            pos++;
+
+        }
+    }
 }
 
-void Mazo::inicializador()
-{
+void Mazo::barajar(){
+    Carta* tC[tam]; //vector para metodo burbuja
+    int contRand = 52, numAl;
 
-}
+    for (int i = 0; i < tam; i++) { 
 
-void Mazo::barajar()
-{
+        numAl = rand() % contRand; //aleatorio para revolver
+
+        tC[i] = carta[numAl]; 
+
+        for (int j = numAl; j < contRand - 1; j++) {
+            carta[j] = carta[j + 1];
+
+        }
+        carta[contRand - 1] = new Carta(); //elimina (o reinicia mejor dicho) la ultima carta del vector, ya que ahora que todas se movieron, la ultima sobra
+
+        contRand--;
+    }
+
+    for (int i = 0; i < tam; i++) { 
+
+        carta[i] = tC[i];
+
+    }
 }
 //Método de tomar una carta del mazo para darsela a un jugador
 //Siempre y cuando la carta aún no sea tomada por algún otro jugador
-Carta* Mazo::tomarCarta()
-{
+Carta* Mazo::tomarCarta(){
     if (carta[0] != nullptr) {
         // Almacenar el puntero a la primera carta
         Carta* tomada = carta[0];

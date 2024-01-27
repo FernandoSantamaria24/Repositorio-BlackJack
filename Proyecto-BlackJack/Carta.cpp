@@ -1,9 +1,16 @@
 #include "Carta.h"
-
+//Constrcutor sin parámetros clase Carta
+Carta::Carta()
+{
+	valor = 0;
+	palo = 0;
+	bocaAbajo = true;
+}
+//Constructor con parámetros clase Carta
 Carta::Carta(int val, int pal, bool bocaA) : valor(val), palo(pal), bocaAbajo(bocaA)
 {
 }
-
+//Desctructor básico de la clase Carta
 Carta::~Carta()
 {
 }
@@ -18,22 +25,15 @@ int Carta::getPalo()
 	return palo;
 }
 
-void Carta::setValor(int n){
-	if (palo==0) {
-		std::cout << "El valor de su carta  'A' a sido cambiado por: " << n;
-		valor = n;
-	}
-	else {
-		std::cout << "El palo de su carta no coincide con un As";
-	}
+void Carta::setValor(int v){
+	valor = v;
+}
+
+void Carta::setPalo(int p){
+	palo = p;
 }
 
 void Carta::voltear()
 {
-	if (bocaAbajo == true) {
-		std::cout << "Esta carta esta volteada.";
-	}
-	else {
-		std::cout << valor << palo;
-	}
+	bocaAbajo = true;
 }

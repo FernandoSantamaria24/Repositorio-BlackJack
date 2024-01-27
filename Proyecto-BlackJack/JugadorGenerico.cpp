@@ -11,13 +11,3 @@ JugadorGenerico::JugadorGenerico(std::string nick, Mano* manoJuego) : nickname(n
 JugadorGenerico::~JugadorGenerico()
 {
 }
-
-Carta* JugadorGenerico::pedirCarta()
-{
-	return 0;
-}
-
-bool JugadorGenerico::sePaso()
-{
-	return 0;
-}

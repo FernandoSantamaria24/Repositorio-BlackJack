@@ -12,6 +12,6 @@ public:
 	JugadorGenerico();
 	JugadorGenerico(std::string, Mano*);
 	~JugadorGenerico();
-	virtual Carta* pedirCarta();
-	virtual bool sePaso();
+	virtual Carta* pedirCarta()=0;
+	virtual bool sePaso()=0;
 };
