@@ -81,7 +81,7 @@ Carta* Mazo::tomarCarta(){
     }
 
 }
-
+//ToString de prueba para conocer si la cartas son ingresadas al mazo
 void Mazo::toString()
 {
     for (int i = 0; i < tam; i++)
