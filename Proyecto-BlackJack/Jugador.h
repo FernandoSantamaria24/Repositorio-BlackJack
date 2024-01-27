@@ -7,5 +7,6 @@ public:
 	Jugador(std::string, Mano*);
 	~Jugador();
 	Carta* pedirCarta(); //Falta desarrollar
+	bool sePaso();//Desarrolar
 
 };

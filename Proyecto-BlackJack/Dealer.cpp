@@ -1,6 +1,7 @@
 #include "Dealer.h"
 //Constructor con parámetros
-Dealer::Dealer(std::string nombre, Mano* manoDealer) : JugadorGenerico(nombre, manoDealer){}
+Dealer::Dealer(std::string nombre, Mano* manoDealer) : JugadorGenerico(nombre, manoDealer){
+}
 //Destructor de la clase Dealer
 Dealer::~Dealer(){
 	delete[] mano;
@@ -9,6 +10,13 @@ Dealer::~Dealer(){
 Carta* Dealer::pedirCarta(){
 	return nullptr;
 }
+
+bool Dealer::sePaso()
+{
+	return false;
+}
+
+
 
 void Dealer::volteaSegunda(){
 }

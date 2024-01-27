@@ -12,4 +12,5 @@ public:
 	void inicializador();
 	void barajar();
 	Carta* tomarCarta();
+	void toString();
 };

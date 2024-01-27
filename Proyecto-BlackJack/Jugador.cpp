@@ -1,6 +1,7 @@
 #include "Jugador.h"
 //Constructor con parámetros
-Jugador::Jugador(std::string nombre, Mano* manoJugador) : JugadorGenerico(nombre, manoJugador){}
+Jugador::Jugador(std::string nombre, Mano* manoJugador) : JugadorGenerico(nombre, manoJugador){
+}
 
 //Desctructor de la clase Jugador
 Jugador::~Jugador()
@@ -11,3 +12,9 @@ Jugador::~Jugador()
 Carta* Jugador::pedirCarta(){
 	return nullptr;
 }
+
+bool Jugador::sePaso()
+{
+	return false;
+}
+

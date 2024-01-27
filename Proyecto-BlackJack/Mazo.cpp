@@ -81,3 +81,14 @@ Carta* Mazo::tomarCarta(){
     }
 
 }
+
+void Mazo::toString()
+{
+    for (int i = 0; i < tam; i++)
+    {
+        std::cout << "Carta #"<<i << "\n";
+        std::cout << "Valor: " << carta[i]->getValor() << "   ";
+        std::cout << "Palo: " << carta[i]->getPalo() << "  ";;
+        std::cout << "Lado: " << carta[i]->getBocaAbajo() << "\n  ";;
+    }
+}
