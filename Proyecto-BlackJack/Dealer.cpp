@@ -13,7 +13,10 @@ Carta* Dealer::pedirCarta(){
 
 bool Dealer::sePaso()
 {
-	return false;
+	if (mano->getPuntos() > 21) {
+		return false;
+	}
+	return true;
 }
 
 

@@ -15,6 +15,9 @@ Carta* Jugador::pedirCarta(){
 
 bool Jugador::sePaso()
 {
-	return false;
+	if (mano->getPuntos()>21) {
+		return false;
+	}
+	return true;
 }
 
