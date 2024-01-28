@@ -18,8 +18,9 @@ Mano::~Mano(){
 //Agrega una carta a la mano del jugador seleccionado
 //Solo se pueden agregar una cantidad de 10 cartas a la mano de cada jugador
 void Mano::agregarCarta(Mazo* m){
-	if (cant<=9) {
-		this->cartas[cant++] = m->tomarCarta();
+	if (cant<9) {
+		this->cartas[cant] = m->tomarCarta();
+		cant++;
 	}
 	else {
 		std::cout << "Ya no se pueden pedir cartas (limite completado)\n";
