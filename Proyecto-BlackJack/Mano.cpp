@@ -29,6 +29,7 @@ void Mano::agregarCarta(Mazo* m){
 }
 //Limpia la mano para que el jugador pueda volver a jugar otra partida
 //FALTA DESARROLLAR
+//TOTALMENTE MALO
 void Mano::limpiar(){
 	for (int i = 0; i < 9; i++){
 		if (cartas[i]!=nullptr) {
