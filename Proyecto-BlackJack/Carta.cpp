@@ -14,7 +14,7 @@ Carta::Carta(int val, int pal, bool bocaA) : valor(val), palo(pal), bocaAbajo(bo
 Carta::~Carta()
 {
 }
-
+//Inicio métodos get clase Carta
 int Carta::getValor()
 {
 	return valor;
@@ -29,7 +29,8 @@ bool Carta::getBocaAbajo()
 {
 	return bocaAbajo;
 }
-
+//Final métodos get clase Carta
+//Inicio métodos set clase Carta
 void Carta::setValor(int v){
 	valor = v;
 }
@@ -41,12 +42,12 @@ void Carta::setPalo(int p){
 void Carta::setBocaAbajo(bool b){
 	bocaAbajo = b;
 }
-
+//Final métodos set clase Carta
 void Carta::voltear()
 {
-	bocaAbajo = true;
+	bocaAbajo = false;
 }
-
+//Método mostrar clase Carta
 void Carta::toString(){
 	std::cout << valor;
 	//Realizar un random con palo

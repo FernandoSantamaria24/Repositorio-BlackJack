@@ -1,7 +1,7 @@
 #include "Mazo.h"
 #include "Carta.h"
 #include "Mano.h"
-
+//Constructor sin pa´rametros de la clase Mazo
 Mazo::Mazo(){
     for (int i = 0; i < tam; i++)
     {
@@ -16,7 +16,7 @@ Mazo::~Mazo(){
     }
 }
 
-
+//Método encargado de Inicializar las cartas de una partida y agregarlas al mazo de la misma partida
 void Mazo::inicializador(){
     int pos = 0;
 
@@ -32,7 +32,7 @@ void Mazo::inicializador(){
         }
     }
 }
-
+//Método encarga de revolver las cartas en cada inicio de juego
 void Mazo::barajar(){
     Carta* tC[tam]; //vector para metodo burbuja
     int contRand = 52, numAl;
