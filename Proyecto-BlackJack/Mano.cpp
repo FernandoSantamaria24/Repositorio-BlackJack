@@ -46,3 +46,11 @@ int Mano::getPuntos()
 	}
 	return sum;
 }
+//Método para mostrar las cartas de la mano para cada jugador
+void Mano::toString(){
+	for (int i = 0; i < 9; i++)
+	{
+		std::cout <<" " << cartas[i]->getValor() << " ";
+		std::cout << cartas[i]->getPalo()<< "\n";
+	}
+}

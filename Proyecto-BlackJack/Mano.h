@@ -12,4 +12,5 @@ public:
 	void agregarCarta(Mazo*);
 	void limpiar();
 	int getPuntos();
+	void toString();
 };
