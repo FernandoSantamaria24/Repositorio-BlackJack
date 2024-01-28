@@ -17,4 +17,5 @@ public:
 	void setPalo(int);
 	void setBocaAbajo(bool);
 	void voltear(); //falta desarrollar
+	void toString();
 };

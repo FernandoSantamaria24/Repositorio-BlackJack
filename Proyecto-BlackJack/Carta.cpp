@@ -46,3 +46,8 @@ void Carta::voltear()
 {
 	bocaAbajo = true;
 }
+
+void Carta::toString(){
+	std::cout << valor;
+	//Realizar un random con palo
+}

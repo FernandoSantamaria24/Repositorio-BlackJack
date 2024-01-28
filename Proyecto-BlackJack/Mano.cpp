@@ -50,7 +50,7 @@ int Mano::getPuntos()
 void Mano::toString(){
 	for (int i = 0; i < 9; i++)
 	{
-		std::cout <<" " << cartas[i]->getValor() << " ";
-		std::cout << cartas[i]->getPalo()<< "\n";
+	 cartas[i]->toString();
+	 std::cout << "     ";
 	}
 }
