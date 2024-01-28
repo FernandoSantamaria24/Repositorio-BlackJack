@@ -72,7 +72,6 @@ Carta* Mazo::tomarCarta(){
 
         // La última posición se vuelve nullptr para indicar que está vacía.
         carta[51] = nullptr;
-        std::cout << "\nLa carta tomada es:\n";
         return tomada;
     }
     else {

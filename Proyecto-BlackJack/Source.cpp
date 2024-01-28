@@ -10,15 +10,20 @@ int main() {
 	Jugador* j= new Jugador("Pedro", NULL);
 	l.insertarNodoJugador(j);
 	//Prueba para metodos de la clase Mazo
-	Mazo m;
+	Mazo* m= new Mazo();
 	//Inciar las cartas con un valor de 1 a 10
 	std::cout << "\nINICIO MAZO SIN BARAJAR\n";
-	m.inicializador();
-	m.toString();
+	m->inicializador();
+	m->toString();
 	//Barajar las cartas para su mezcla
 	std::cout << "\nINICIO MAZO BARAJADO\n";
-	m.barajar();
-	m.toString();
+	m->barajar();
+	m->toString();
+
+	//Prueba Clase MANO
+	Mano manoUno;
+	manoUno.agregarCarta(m);
+	manoUno.agregarCarta(m);
 
 	delete j;
 	return 0;
