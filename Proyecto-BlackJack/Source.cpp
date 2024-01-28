@@ -32,6 +32,7 @@ int main() {
 	manoUno.agregarCarta(m);
 	manoUno.agregarCarta(m);
 	manoUno.agregarCarta(m);//No deja tomar más cartas por el límite puesto de 9 cartas 
+	manoUno.toString();
 
 	delete j;
 	return 0;

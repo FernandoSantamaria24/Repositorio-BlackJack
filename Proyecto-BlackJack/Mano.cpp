@@ -20,9 +20,7 @@ Mano::~Mano(){
 void Mano::agregarCarta(Mazo* m){
 	if (cant<9) {
 		this->cartas[cant] = m->tomarCarta();
-		std::cout << "Carta tomada:  ";
-		this->cartas[cant]->toString();
-		std::cout << "\n";
+		std::cout << "Carta tomada\n";
 		cant++;
 	}
 	else {
