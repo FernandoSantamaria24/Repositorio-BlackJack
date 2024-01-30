@@ -7,7 +7,7 @@
 int main() {
 	//Prueba de clase lista para conocer su funcionamiento
 	Lista l;
-	Jugador* j= new Jugador("Pedro", NULL);
+	Jugador* j= new Jugador("Pedro", NULL); 
 	l.insertarNodoJugador(j);
 	//Prueba para metodos de la clase Mazo
 	Mazo* m= new Mazo();
