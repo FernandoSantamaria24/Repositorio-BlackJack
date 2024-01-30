@@ -7,8 +7,22 @@ Dealer::~Dealer(){
 	delete[] mano;
 }
 
-Carta* Dealer::pedirCarta(){
-	return nullptr;
+Carta* Dealer::pedirCarta(Mazo* mazo){
+	if (!sePaso()) {
+		Carta* nuevaCarta = mano->agregarCarta(mazo);
+		if (nuevaCarta != nullptr) {
+			mano->agregarCarta((Mazo*)&nuevaCarta);
+			return nuevaCarta;
+		}
+		else {
+			std::cout << "No quedan más cartas en el mazo\n";
+			return nullptr;
+		}
+	}
+	else {
+		std::cout << "Ya no se pueden pedir más cartas\n";
+		return nullptr;
+	}
 }
 
 bool Dealer::sePaso()
@@ -21,5 +35,11 @@ bool Dealer::sePaso()
 
 
 
-void Dealer::volteaSegunda(){
+void Dealer::volteaSegunda()
+{
+	Mano* manoDeDealer = getMano();
+	if (manoDeDealer->getCantidad() >= 2) {
+		Carta* segunda = manoDeDealer->getCartaPosicion(1);
+		segunda->setBocaAbajo(true);
+	}
 }

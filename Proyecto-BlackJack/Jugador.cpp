@@ -9,8 +9,22 @@ Jugador::~Jugador()
 	delete[] mano;
 }
 
-Carta* Jugador::pedirCarta(){
-	return nullptr;
+Carta* Jugador::pedirCarta(Mazo* mazo){
+	if (!sePaso()) {
+		Carta* nuevaCarta = mano->agregarCarta(mazo);
+		if (nuevaCarta != nullptr) {
+			mano->agregarCarta((Mazo*)&nuevaCarta); 
+			return nuevaCarta;
+		}
+		else {
+			std::cout << "No quedan más cartas en el mazo\n";
+			return nullptr;
+		}
+	}
+	else {
+		std::cout << "Ya no se pueden pedir más cartas\n";
+		return nullptr;
+	}
 }
 
 bool Jugador::sePaso()

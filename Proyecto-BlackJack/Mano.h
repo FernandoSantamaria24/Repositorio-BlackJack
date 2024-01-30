@@ -9,8 +9,10 @@ private:
 public:
 	Mano();
 	~Mano();
-	void agregarCarta(Mazo*);
+	Carta* agregarCarta(Mazo*);
 	void limpiar();
 	int getPuntos();
+	int getCantidad();
+	Carta* getCartaPosicion(int);
 	void toString();
 };

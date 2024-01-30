@@ -17,14 +17,23 @@ Mano::~Mano(){
 }
 //Agrega una carta a la mano del jugador seleccionado
 //Solo se pueden agregar una cantidad de 10 cartas a la mano de cada jugador
-void Mano::agregarCarta(Mazo* m){
+Carta* Mano::agregarCarta(Mazo* m){
 	if (cant<9) {
-		this->cartas[cant] = m->tomarCarta();
-		std::cout << "Carta tomada\n";
-		cant++;
+		Carta* nuevaCarta = m->tomarCarta();
+		if (nuevaCarta != nullptr) {
+			cartas[cant] = nuevaCarta;
+			std::cout << "Carta tomada\n";
+			cant++;
+			return nuevaCarta;
+		}
+		else {
+			std::cout << "Ya no quedan cartas en el mazo\n";
+			return nullptr;
+		}
 	}
 	else {
 		std::cout << "Ya no se pueden pedir cartas (limite completado)\n";
+		return nullptr;
 	}
 }
 //Limpia la mano para que el jugador pueda volver a jugar otra partida
@@ -47,6 +56,19 @@ int Mano::getPuntos()
 		}
 	}
 	return sum;
+}
+int Mano::getCantidad()
+{
+	return cant;
+}
+Carta* Mano::getCartaPosicion(int posicion)
+{
+	if (posicion >= 0 && posicion < cant) {
+		return cartas[posicion];
+	}
+	else {
+		return nullptr;
+	}
 }
 //Método para mostrar las cartas de la mano para cada jugador
 void Mano::toString(){
