@@ -1,39 +1,31 @@
 #include <iostream>
-#include "Carta.h"
-#include "Mazo.h"
-#include "Lista.h"
-#include "Jugador.h"
+#include "Juego.h"
 //Main de pruebas 
+int ingresoSistema();
 int main() {
-	//Prueba de clase lista para conocer su funcionamiento
-	Lista l;
-	Jugador* j= new Jugador("Pedro", NULL); 
-	l.insertarNodoJugador(j);
-	//Prueba para metodos de la clase Mazo
-	Mazo* m= new Mazo();
-	//Inciar las cartas con un valor de 1 a 10
-	std::cout << "\nINICIO MAZO SIN BARAJAR\n";
-	m->inicializador();
-	m->toString();
-	//Barajar las cartas para su mezcla
-	std::cout << "\nINICIO MAZO BARAJADO\n";
-	m->barajar();
-	m->toString();
-
-	//Prueba Clase MANO
-	Mano manoUno;
-	manoUno.agregarCarta(m);
-	manoUno.agregarCarta(m);
-	manoUno.agregarCarta(m);
-	manoUno.agregarCarta(m);
-	manoUno.agregarCarta(m);
-	manoUno.agregarCarta(m);
-	manoUno.agregarCarta(m);
-	manoUno.agregarCarta(m);
-	manoUno.agregarCarta(m);
-	manoUno.agregarCarta(m);//No deja tomar más cartas por el límite puesto de 9 cartas 
-	manoUno.toString();
-
-	delete j;
+	Juego juegoInicial;
+	switch (ingresoSistema()){
+	case 1:
+		juegoInicial.jugar();
+		break;
+	case 2:
+		std::cout << "CARGANDO JUEGO ANTIGUO\n";
+		break;
+	case 3:
+		exit(0);
+		break;
+	default:
+		std::cout << "la opcion no se encuentra dentro del sistema\n  Digitar numeros entre 1-3\n";
+		ingresoSistema();
+	}
 	return 0;
+}
+int ingresoSistema() {
+	int opcion;
+	std::cout << "(1)  Nuevo Juego: Inicio un juego nuevo de Blackjack \n";
+	std::cout << "(2)  Cargar Partida: Carga una partida guardada de un juego previo de Blackjac\n";
+	std::cout << "(3)  Salir: Termina el programa\n";
+	std::cin >> opcion;
+
+	return opcion;
 }
