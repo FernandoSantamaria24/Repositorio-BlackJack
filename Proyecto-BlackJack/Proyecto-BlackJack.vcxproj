@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClInclude Include="Carta.h" />
     <ClInclude Include="Dealer.h" />
+    <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugador.h" />
     <ClInclude Include="JugadorGenerico.h" />
     <ClInclude Include="Lista.h" />
@@ -139,6 +140,7 @@
   <ItemGroup>
     <ClCompile Include="Carta.cpp" />
     <ClCompile Include="Dealer.cpp" />
+    <ClCompile Include="Juego.cpp" />
     <ClCompile Include="Jugador.cpp" />
     <ClCompile Include="JugadorGenerico.cpp" />
     <ClCompile Include="Lista.cpp" />
