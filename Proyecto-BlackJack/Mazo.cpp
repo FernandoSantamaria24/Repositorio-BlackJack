@@ -1,7 +1,7 @@
 #include "Mazo.h"
 #include "Carta.h"
 #include "Mano.h"
-//Constructor sin pa´rametros de la clase Mazo
+//Constructor sin parámetros de la clase Mazo
 Mazo::Mazo(){
     for (int i = 0; i < tam; i++)
     {
@@ -80,6 +80,8 @@ Carta* Mazo::tomarCarta(){
     }
 
 }
+//Método copia, lo que hace es recorrer el vector hasta un tope de 51, donde se le asigna a mazoCopia
+//El valor de la carta con su copia, lo que nos permitira no perder nunca sus valores
 Mazo* Mazo::copia()
 {
     Mazo* mazoCopia = new Mazo();
