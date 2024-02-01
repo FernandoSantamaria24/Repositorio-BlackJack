@@ -47,6 +47,10 @@ void Carta::voltear()
 {
 	bocaAbajo = false;
 }
+Carta* Carta::copia()
+{
+	return new Carta(valor, palo, bocaAbajo);
+}
 //Método mostrar clase Carta
 void Carta::toString(){
 	std::cout << valor;

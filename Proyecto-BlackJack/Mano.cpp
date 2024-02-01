@@ -72,6 +72,16 @@ Carta* Mano::getCartaPosicion(int posicion)
 		return nullptr;
 	}
 }
+Mano* Mano::copia()
+{
+	Mano* manoCopia = new Mano();
+
+	for (int i = 0;i < tam;i++) {
+		manoCopia->cartas[i] = cartas[i]->copia();
+	}
+
+	return manoCopia;
+}
 //Método para mostrar las cartas de la mano para cada jugador
 void Mano::toString(){
 	for (int i = 0; i < 9; i++)

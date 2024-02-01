@@ -27,6 +27,10 @@ Carta* Jugador::pedirCarta(Mazo* mazo){
 		return nullptr;
 	}
 }
+JugadorGenerico* Jugador::copia()
+{
+	return new Jugador(nickname, mano);
+}
 //Método encargado de conocer si los jugadore la cantidad de cartas en mayor o no de 21 
 bool Jugador::sePaso()
 {

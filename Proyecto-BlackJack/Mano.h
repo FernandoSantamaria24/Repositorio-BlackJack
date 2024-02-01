@@ -14,5 +14,6 @@ public:
 	int getPuntos();
 	int getCantidad();
 	Carta* getCartaPosicion(int);
+	Mano* copia();
 	void toString();
 };

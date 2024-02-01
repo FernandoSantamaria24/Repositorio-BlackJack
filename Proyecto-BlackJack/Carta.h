@@ -17,5 +17,6 @@ public:
 	void setPalo(int);
 	void setBocaAbajo(bool);
 	void voltear(); //falta desarrollar
+	Carta* copia();
 	void toString();
 };

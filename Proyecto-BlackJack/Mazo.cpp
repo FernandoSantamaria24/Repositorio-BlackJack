@@ -80,6 +80,16 @@ Carta* Mazo::tomarCarta(){
     }
 
 }
+Mazo* Mazo::copia()
+{
+    Mazo* mazoCopia = new Mazo();
+
+    for (int i = 0;i < tam;i++) {
+        mazoCopia->carta[i] = carta[i]->copia();
+    }
+
+    return mazoCopia; 
+}
 //ToString de prueba para conocer si la cartas son ingresadas al mazo
 //MAL HECHO UTILIZADO SOLO PARA CUESTIONES DE PRUEBA
 void Mazo::toString()

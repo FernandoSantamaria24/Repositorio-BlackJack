@@ -13,6 +13,7 @@ public:
 	JugadorGenerico(std::string, Mano*);
 	~JugadorGenerico();
 	Mano* getMano();
+	virtual JugadorGenerico* copia()=0;
 	virtual Carta* pedirCarta(Mazo*)=0;
 	virtual bool sePaso()=0;
 	virtual void toString()=0;
