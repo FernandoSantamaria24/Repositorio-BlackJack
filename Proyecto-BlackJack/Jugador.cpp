@@ -8,7 +8,8 @@ Jugador::~Jugador()
 {
 	delete[] mano;
 }
-
+//Método encargado de pedir la carta de cada jugador en la clase de Jugador
+//Añade cada carta a la mano del jugadro determinado en el Juego
 Carta* Jugador::pedirCarta(Mazo* mazo){
 	if (!sePaso()) {
 		Carta* nuevaCarta = mano->agregarCarta(mazo);
@@ -26,12 +27,17 @@ Carta* Jugador::pedirCarta(Mazo* mazo){
 		return nullptr;
 	}
 }
-
+//Método encargado de conocer si los jugadore la cantidad de cartas en mayor o no de 21 
 bool Jugador::sePaso()
 {
 	if (mano->getPuntos()>21) {
 		return false;
 	}
 	return true;
+}
+//Método toString de la clase JUgador
+//Muestra cada una de las cartas del jugador con sus valores respectivos 
+void Jugador::toString(){
+	mano->toString();
 }
 

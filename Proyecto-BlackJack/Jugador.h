@@ -7,6 +7,7 @@ class Jugador : public JugadorGenerico {
 public:
 	Jugador(std::string, Mano*);
 	~Jugador();
-	Carta* pedirCarta(Mazo*); //Falta desarrollar
+	Carta* pedirCarta(Mazo*);
 	bool sePaso();//Desarrolar
+	void toString();
 };

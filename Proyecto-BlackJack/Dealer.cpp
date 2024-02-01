@@ -6,7 +6,8 @@ Dealer::Dealer(std::string nombre, Mano* manoDealer) : JugadorGenerico(nombre, m
 Dealer::~Dealer(){
 	delete[] mano;
 }
-
+//Método encargado de pedir la carta de cada jugador en la clase de Dealer
+//Añade cada carta a la mano del jugadro determinado en el Juego
 Carta* Dealer::pedirCarta(Mazo* mazo){
 	if (!sePaso()) {
 		Carta* nuevaCarta = mano->agregarCarta(mazo);
@@ -24,7 +25,7 @@ Carta* Dealer::pedirCarta(Mazo* mazo){
 		return nullptr;
 	}
 }
-
+//Método encargado de conocer si los jugadore la cantidad de cartas en mayor o no de 21 
 bool Dealer::sePaso()
 {
 	if (mano->getPuntos() > 21) {
@@ -34,12 +35,24 @@ bool Dealer::sePaso()
 }
 
 
-
+//Voltea la segunda carta del deaelr para ser mostrada a los jugadores del juego
+//Si la segunda carta esta volteada se va mostrando en el toString
 void Dealer::volteaSegunda()
 {
 	Mano* manoDeDealer = getMano();
 	if (manoDeDealer->getCantidad() >= 2) {
 		Carta* segunda = manoDeDealer->getCartaPosicion(1);
 		segunda->setBocaAbajo(true);
+	}
+}
+//Método toString de la clase Dealer
+//Muestra las cartas del Dealer dentro del juego
+void Dealer::toString()
+{
+	for (int i = 0; i < 9; i++)
+	{
+		if (mano->getCartaPosicion(i)->getBocaAbajo()==true) {
+			mano->getCartaPosicion(i)->toString();
+		}
 	}
 }

@@ -9,4 +9,5 @@ public:
 	Juego();
 	~Juego();
 	void jugar();
+	void toString();
 };

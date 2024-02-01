@@ -7,8 +7,9 @@ class Dealer : public JugadorGenerico {
 public:
 	Dealer(std::string, Mano*);
 	~Dealer();
-	Carta* pedirCarta(Mazo*); //falta desarrollar
+	Carta* pedirCarta(Mazo*);
 	bool sePaso();//Desarrolar
 	void volteaSegunda(); //falta desarrollar
+	void toString();
 
 };
