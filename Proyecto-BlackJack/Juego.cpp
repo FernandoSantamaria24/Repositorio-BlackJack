@@ -6,6 +6,24 @@ Juego::~Juego(){}
 //Método Jugar encargado de toda la lógica del juego BlackJack
 void Juego::jugar(){
 	std::cout << "ingreso a jugar";
+	                 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
