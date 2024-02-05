@@ -87,6 +87,10 @@ void Lista::borrarNodoJugador(JugadorGenerico* Jugador)
 	tmp2->next = tmp->next;
 	delete tmp;
 }
+//Método encargado de mover el jugador cada vez que el juego lo desee
+Nodo* Lista::siguienteJugador(){
+	return nullptr;
+}
 //Método que nos permite saber si la lista ya tiene o no algun elemento ya creado
 bool Lista::listaVacia()
 {

@@ -18,12 +18,12 @@ Carta* Jugador::pedirCarta(Mazo* mazo){
 			return nuevaCarta;
 		}
 		else {
-			std::cout << "No quedan más cartas en el mazo\n";
+			std::cout << "No quedan más cartas en el mazo\n" << std::endl;
 			return nullptr;
 		}
 	}
 	else {
-		std::cout << "Ya no se pueden pedir más cartas\n";
+		std::cout << "Ya no se pueden pedir más cartas\n" << std::endl;
 		return nullptr;
 	}
 }

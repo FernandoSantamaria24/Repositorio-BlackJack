@@ -22,17 +22,17 @@ Carta* Mano::agregarCarta(Mazo* m){
 		Carta* nuevaCarta = m->tomarCarta();
 		if (nuevaCarta != nullptr) {
 			cartas[cant] = nuevaCarta;
-			std::cout << "Carta tomada\n";
+			std::cout << "Carta tomada\n" << std::endl;
 			cant++;
 			return nuevaCarta;
 		}
 		else {
-			std::cout << "Ya no quedan cartas en el mazo\n";
+			std::cout << "Ya no quedan cartas en el mazo\n" << std::endl;
 			return nullptr;
 		}
 	}
 	else {
-		std::cout << "Ya no se pueden pedir cartas (limite completado)\n";
+		std::cout << "Ya no se pueden pedir cartas (limite completado)\n" << std::endl;
 		return nullptr;
 	}
 }

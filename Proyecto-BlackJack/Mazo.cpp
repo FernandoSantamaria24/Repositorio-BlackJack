@@ -99,8 +99,8 @@ void Mazo::toString()
     for (int i = 0; i < tam; i++)
     {
         std::cout << "Carta #"<<i << "\n";
-        std::cout << "Valor: " << carta[i]->getValor() << "   ";
-        std::cout << "Palo: " << carta[i]->getPalo() << "  ";;
-        std::cout << "Lado: " << carta[i]->getBocaAbajo() << "\n  ";;
+        std::cout << "Valor: " << carta[i]->getValor() << "   " << std::endl;
+        std::cout << "Palo: " << carta[i]->getPalo() << "  " << std::endl;
+        std::cout << "Lado: " << carta[i]->getBocaAbajo() << "\n  " << std::endl;
     }
 }
