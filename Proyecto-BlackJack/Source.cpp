@@ -3,7 +3,8 @@
 //Main de pruebas 
 int main() {
     int opcion;
-    Juego juegoNuevo;
+    Mazo* mazoNuevo = new Mazo();
+    Juego* juegoNuevo=new Juego(mazoNuevo);
     do {
         // Pantalla inicial
         std::cout << "1) Nuevo Juego: Inicia un juego nuevo de Blackjack\n";
@@ -15,12 +16,13 @@ int main() {
         switch (opcion) {
         case 1:
             system("cls");
-            juegoNuevo.jugar();
+            juegoNuevo->jugar();
             break;
         case 2:
             std::cout << "CARGANDO JUEGO PASADO\n";
             break;
         case 3:
+            system("cls");
             std::cout << "¡GRACIAS POR PARTICIPAR!\n";
             break;
         default:
@@ -29,6 +31,6 @@ int main() {
         }
 
     } while (opcion != 3);
-
+    delete juegoNuevo;
     return 0;
 }

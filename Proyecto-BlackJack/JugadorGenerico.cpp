@@ -12,7 +12,3 @@ JugadorGenerico::~JugadorGenerico()
 {
 }
 
-Mano* JugadorGenerico::getMano()
-{
-	return mano;
-}

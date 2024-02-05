@@ -3,11 +3,12 @@
 #include "Lista.h"
 class Juego {
 private:
-	Mazo baraja;
+	Mazo* baraja;
 	Lista listaJugadores;
 public:
-	Juego();
+	Juego(Mazo*);
 	~Juego();
+	bool ingresoJugadores();
 	void jugar();
 	void toString();
 };

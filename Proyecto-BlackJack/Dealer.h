@@ -9,6 +9,7 @@ public:
 	~Dealer();
 	Carta* pedirCarta(Mazo*);
 	JugadorGenerico* copia();
+	Mano* getMano();
 	bool sePaso();//Desarrolar
 	void volteaSegunda(); //falta desarrollar
 	std::string getNickname();

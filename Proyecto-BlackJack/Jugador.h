@@ -8,6 +8,7 @@ public:
 	Jugador(std::string, Mano*);
 	~Jugador();
 	Carta* pedirCarta(Mazo*);
+	Mano* getMano();
 	JugadorGenerico* copia();
 	bool sePaso();//Desarrolar
 	std::string getNickname();

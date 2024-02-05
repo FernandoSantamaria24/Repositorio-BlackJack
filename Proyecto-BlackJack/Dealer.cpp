@@ -30,6 +30,10 @@ JugadorGenerico* Dealer::copia()
 {
 	return new Dealer(nickname, mano);
 }
+Mano* Dealer::getMano()
+{
+	return mano;
+}
 //Método encargado de conocer si los jugadore la cantidad de cartas en mayor o no de 21 
 bool Dealer::sePaso()
 {

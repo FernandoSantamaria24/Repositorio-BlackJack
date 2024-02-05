@@ -27,6 +27,10 @@ Carta* Jugador::pedirCarta(Mazo* mazo){
 		return nullptr;
 	}
 }
+Mano* Jugador::getMano()
+{
+	return mano;
+}
 //Método encargado de realizar una copia de la clase Jugador
 JugadorGenerico* Jugador::copia()
 {
