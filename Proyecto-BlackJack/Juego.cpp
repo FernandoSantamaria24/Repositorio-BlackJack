@@ -1,5 +1,6 @@
 #include "Juego.h"
 #include "Jugador.h"
+#include<fstream>
 //Constructor sin parámetros de la clase Juego
 Juego::Juego(Mazo* m):baraja{m}{
 	baraja->inicializador();
@@ -89,24 +90,6 @@ void Juego::jugar(){
 	else {
 		std::cout << "El ingreso de jugadores tuvo un error (Intente de nuevo)\n" << std::endl;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 void Juego::toString(){

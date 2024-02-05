@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include<fstream>
 
 class Carta {
 private:
@@ -18,5 +19,7 @@ public:
 	void setBocaAbajo(bool);
 	void voltear(); //falta desarrollar
 	Carta* copia();
+	void guardarCarta(std::ofstream&);
+	static Carta* leerCarta(std::ifstream&);
 	void toString();
 };

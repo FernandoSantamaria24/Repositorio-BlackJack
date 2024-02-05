@@ -13,5 +13,7 @@ public:
 	void barajar();
 	Carta* tomarCarta();
 	Mazo* copia();
+	void guardarMazo(std::ofstream&);
+	static Mazo* leerMazo(std::ifstream&);
 	void toString();
 };

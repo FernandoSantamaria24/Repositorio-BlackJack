@@ -15,5 +15,7 @@ public:
 	int getCantidad();
 	Carta* getCartaPosicion(int);
 	Mano* copia();
+	void guardarMano(std::ofstream&);
+	static Mano* leerMano(std::ifstream&);
 	void toString();
 };

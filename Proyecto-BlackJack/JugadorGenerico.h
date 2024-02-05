@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include<fstream>
 #include "Carta.h"
 #include "Mano.h"
 
@@ -18,4 +19,5 @@ public:
 	virtual bool sePaso()=0;
 	virtual std::string getNickname() = 0;
 	virtual void toString()=0;
+	virtual void guardarJugador(std::ofstream&) = 0;
 };

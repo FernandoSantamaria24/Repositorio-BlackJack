@@ -53,6 +53,21 @@ Carta* Carta::copia()
 {
 	return new Carta(valor, palo, bocaAbajo);
 }
+void Carta::guardarCarta(std::ofstream& file)
+{
+	file << valor << palo << bocaAbajo;
+}
+Carta* Carta::leerCarta(std::ifstream& file)
+{
+	int val, pal;
+	bool bocaA;
+
+	file >> val >> pal >> bocaA;
+
+	Carta* nuevaCarta = new Carta(val, pal, bocaA);
+
+	return nuevaCarta;
+}
 //Método mostrar clase Carta
 void Carta::toString(){
 	std::cout << valor;

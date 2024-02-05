@@ -1,5 +1,6 @@
 #pragma once
 #include"Nodo.h"
+#include<fstream>
 
 class Lista {
 private:
@@ -13,6 +14,8 @@ public:
 	bool buscarNombreJugador(std::string);
 	void borrarNodoJugador(JugadorGenerico*);
 	Nodo* siguienteJugador();
-	bool listaVacia();
+	void guardarLista(std::ofstream);
+	void leerLista(std::ifstream);
+	bool listaVacia(); 
 };
 

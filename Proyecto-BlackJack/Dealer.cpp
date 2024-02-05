@@ -58,6 +58,20 @@ std::string Dealer::getNickname()
 {
 	return nickname;
 }
+void Dealer::guardarJugador(std::ofstream& file)
+{
+	file << nickname << mano;
+}
+JugadorGenerico* Dealer::leerDealer(std::ifstream& file)
+{
+	std::string nick; 
+	file >> nick; 
+
+	Mano* manoJugador = new Mano(); 
+	Dealer* nuevoDealer = new Dealer(nick, manoJugador); 
+
+	return nuevoDealer; 
+}
 //Método toString de la clase Dealer
 //Muestra las cartas del Dealer dentro del juego
 void Dealer::toString()

@@ -47,6 +47,20 @@ bool Jugador::sePaso()
 std::string Jugador::getNickname(){
 	return nickname;
 }
+void Jugador::guardarJugador(std::ofstream& file)
+{
+	file << "Jugador: " << nickname << mano;
+}
+JugadorGenerico* Jugador::leerJugador(std::ifstream& file)
+{
+	std::string nick;
+	file >> nick;
+
+	Mano* manoJugador = new Mano();
+	Jugador* jugadorNuevo = new Jugador(nick, manoJugador);
+
+	return jugadorNuevo;
+}
 //Método toString de la clase JUgador
 //Muestra cada una de las cartas del jugador con sus valores respectivos 
 void Jugador::toString(){

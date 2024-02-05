@@ -12,5 +12,7 @@ public:
 	JugadorGenerico* copia();
 	bool sePaso();//Desarrolar
 	std::string getNickname();
+	void guardarJugador(std::ofstream&);
+	static JugadorGenerico* leerJugador(std::ifstream&);
 	void toString();
 };

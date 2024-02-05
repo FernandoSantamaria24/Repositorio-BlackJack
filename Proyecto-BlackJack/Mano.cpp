@@ -87,6 +87,30 @@ Mano* Mano::copia()
 
 	return manoCopia;
 }
+void Mano::guardarMano(std::ofstream& file)
+{
+	file << cant << "\n";
+
+	for (int i = 0;i < cant;i++) {
+		cartas[i]->guardarCarta(file);
+	}
+}
+Mano* Mano::leerMano(std::ifstream& file)
+{
+	int cantCartas;
+	file >> cantCartas;
+
+	Mano* nuevaMano = new Mano();
+
+	for (int i = 0;i < cantCartas;i++) {
+		Carta* nuevaCarta = Carta::leerCarta(file);
+		if (nuevaCarta != nullptr) {
+			nuevaMano->cartas[i] = nuevaCarta;
+			nuevaMano->cant++;
+		}
+	}
+	return nuevaMano;
+}
 //Método para mostrar las cartas de la mano para cada jugador
 void Mano::toString(){
 	for (int i = 0; i < 9; i++)

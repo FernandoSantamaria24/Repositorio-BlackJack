@@ -91,6 +91,23 @@ void Lista::borrarNodoJugador(JugadorGenerico* Jugador)
 Nodo* Lista::siguienteJugador(){
 	return nullptr;
 }
+void Lista::guardarLista(std::ofstream file)
+{
+	Nodo* aux = inicio;
+	file.open("ListaJugadores.txt");
+
+	if (file.is_open()) {
+		while (aux != nullptr) {
+			aux->dato->guardarJugador(file);
+			aux = aux->next;
+		}
+	}
+	file.close();
+}
+void Lista::leerLista(std::ifstream)
+{
+	//Falta desarrollar este metodo
+}
 //Método que nos permite saber si la lista ya tiene o no algun elemento ya creado
 bool Lista::listaVacia()
 {

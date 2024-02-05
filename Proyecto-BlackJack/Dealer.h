@@ -13,6 +13,8 @@ public:
 	bool sePaso();//Desarrolar
 	void volteaSegunda(); //falta desarrollar
 	std::string getNickname();
+	void guardarJugador(std::ofstream&);
+	static JugadorGenerico* leerDealer(std::ifstream&);
 	void toString();
 
 };

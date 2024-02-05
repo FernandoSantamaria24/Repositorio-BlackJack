@@ -92,6 +92,24 @@ Mazo* Mazo::copia()
 
     return mazoCopia; 
 }
+void Mazo::guardarMazo(std::ofstream& file)
+{
+    for (int i = 0;i < tam;i++) {
+        carta[i]->guardarCarta(file);
+    }
+}
+Mazo* Mazo::leerMazo(std::ifstream& file)
+{
+    Mazo* nuevoMazo = new Mazo();
+
+    for (int i = 0;i < tam;i++) {
+        Carta* nuevaCarta = Carta::leerCarta(file);
+        if (nuevaCarta != nullptr) {
+            nuevoMazo->carta[i] = nuevaCarta;
+        }
+    }
+    return nuevoMazo;
+}
 //ToString de prueba para conocer si la cartas son ingresadas al mazo
 //MAL HECHO UTILIZADO SOLO PARA CUESTIONES DE PRUEBA
 void Mazo::toString()
