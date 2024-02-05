@@ -12,5 +12,6 @@ public:
 	void inicializador();
 	void barajar();
 	Carta* tomarCarta();
+	Mazo* copia();
 	void toString();
 };

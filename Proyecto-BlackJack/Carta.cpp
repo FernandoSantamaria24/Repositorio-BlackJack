@@ -1,5 +1,5 @@
 #include "Carta.h"
-//Constrcutor sin parámetros clase Carta
+//Constructor sin parámetros clase Carta
 Carta::Carta()
 {
 	valor = 0;
@@ -43,9 +43,15 @@ void Carta::setBocaAbajo(bool b){
 	bocaAbajo = b;
 }
 //Final métodos set clase Carta
+//Método que nos va a ayudar más adelante para voltear las cartas cuando se desee
 void Carta::voltear()
 {
 	bocaAbajo = false;
+}
+//Método copia para no perder los valores de "Carta"
+Carta* Carta::copia()
+{
+	return new Carta(valor, palo, bocaAbajo);
 }
 //Método mostrar clase Carta
 void Carta::toString(){

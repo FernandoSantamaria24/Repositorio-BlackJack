@@ -59,10 +59,13 @@ int Mano::getPuntos()
 	}
 	return sum;
 }
+//Este método nos permite retornar la cantidad de cartas que tiene cada mano
 int Mano::getCantidad()
 {
 	return cant;
 }
+//Este método nos permite saber la posicion de cierta carta en especifico, para así poder interactuar
+//Con esa carta y utilizarla como mejor nos convenga
 Carta* Mano::getCartaPosicion(int posicion)
 {
 	if (posicion >= 0 && posicion < cant) {
@@ -71,6 +74,18 @@ Carta* Mano::getCartaPosicion(int posicion)
 	else {
 		return nullptr;
 	}
+}
+//Método copia, lo que hace es recorrer el vector hasta un tope de 9 cartas por mano, donde se le asigna a manoCopia
+//El valor de la carta con su copia, lo que nos permitira no perder nunca sus valores
+Mano* Mano::copia()
+{
+	Mano* manoCopia = new Mano();
+
+	for (int i = 0;i < 9;i++) {
+		manoCopia->cartas[i] = cartas[i]->copia(); 
+	}
+
+	return manoCopia;
 }
 //Método para mostrar las cartas de la mano para cada jugador
 void Mano::toString(){

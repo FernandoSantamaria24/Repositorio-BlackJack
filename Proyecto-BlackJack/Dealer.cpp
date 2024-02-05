@@ -25,6 +25,11 @@ Carta* Dealer::pedirCarta(Mazo* mazo){
 		return nullptr;
 	}
 }
+//En este método se crea una copia de Dealer con su nombre y mano respectivamente
+JugadorGenerico* Dealer::copia()
+{
+	return new Dealer(nickname, mano);
+}
 //Método encargado de conocer si los jugadore la cantidad de cartas en mayor o no de 21 
 bool Dealer::sePaso()
 {

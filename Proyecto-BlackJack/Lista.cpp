@@ -1,10 +1,11 @@
 #include "Lista.h"
-
+//Constructor de la clase Lista
 Lista::Lista()
 {
 	inicio = nullptr;
 }
 
+//Destructor de la clase Lista
 Lista::~Lista()
 {
 	//En este metodo se utiliza un nodo auxiliar que se iguala a inicio, luego con un ciclo while recorremos la lista hasta que
@@ -16,10 +17,10 @@ Lista::~Lista()
 		aux = inicio;
 	}
 }
-
+//Método que retorna la primer posición de la clase lista
 Nodo* Lista::getInicio()
 {
-	return nullptr;
+	return inicio;
 }
 
 void Lista::insertarNodoJugador(JugadorGenerico* jugador)
@@ -42,7 +43,7 @@ void Lista::insertarNodoJugador(JugadorGenerico* jugador)
 		tmp->next->next = nullptr;
 	}
 }
-
+//Método que nos permite buscar un jugador en especifico
 Nodo* Lista::buscaPersona(JugadorGenerico* jugador)
 {
 	Nodo* actual = inicio;
@@ -86,7 +87,7 @@ void Lista::borrarNodoJugador(JugadorGenerico* Jugador)
 	tmp2->next = tmp->next;
 	delete tmp;
 }
-
+//Método que nos permite saber si la lista ya tiene o no algun elemento ya creado
 bool Lista::listaVacia()
 {
 	return (inicio == NULL);
