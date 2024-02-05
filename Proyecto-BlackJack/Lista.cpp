@@ -55,6 +55,19 @@ Nodo* Lista::buscaPersona(JugadorGenerico* jugador)
 	}
 	return nullptr;
 }
+//Método encargado de buscar la repeticion de nombres y conocer si alguno de los ingresados es igual a alguno de la lista
+//Si dentro de la lista el nombre es igual retorna un valor de true
+bool Lista::buscarNombreJugador(std::string jugadorNombre)
+{
+	Nodo* actual = inicio;
+	while (actual != nullptr) {
+		if (actual->dato->getNickname()==jugadorNombre) {//Verifica si existe algún nombre igual al del usario ingresado
+			return true;
+		}
+		actual = actual->next;
+	}
+	return false;
+}
 
 void Lista::borrarNodoJugador(JugadorGenerico* Jugador)
 {

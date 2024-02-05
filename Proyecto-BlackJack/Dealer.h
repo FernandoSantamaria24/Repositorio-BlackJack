@@ -10,6 +10,7 @@ public:
 	Carta* pedirCarta(Mazo*);
 	bool sePaso();//Desarrolar
 	void volteaSegunda(); //falta desarrollar
+	std::string getNickname();
 	void toString();
 
 };

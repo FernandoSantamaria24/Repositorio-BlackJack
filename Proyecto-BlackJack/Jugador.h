@@ -9,5 +9,6 @@ public:
 	~Jugador();
 	Carta* pedirCarta(Mazo*);
 	bool sePaso();//Desarrolar
+	std::string getNickname();
 	void toString();
 };

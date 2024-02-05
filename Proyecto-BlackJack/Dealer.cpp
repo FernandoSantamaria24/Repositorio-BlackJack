@@ -45,6 +45,10 @@ void Dealer::volteaSegunda()
 		segunda->setBocaAbajo(true);
 	}
 }
+std::string Dealer::getNickname()
+{
+	return nickname;
+}
 //Método toString de la clase Dealer
 //Muestra las cartas del Dealer dentro del juego
 void Dealer::toString()

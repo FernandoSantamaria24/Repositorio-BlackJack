@@ -14,13 +14,14 @@ int main() {
 
         switch (opcion) {
         case 1:
+            system("cls");
             juegoNuevo.jugar();
             break;
         case 2:
             std::cout << "CARGANDO JUEGO PASADO\n";
             break;
         case 3:
-            std::cout << "¡Hasta luego!\n";
+            std::cout << "¡GRACIAS POR PARTICIPAR!\n";
             break;
         default:
             system("cls");

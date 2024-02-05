@@ -15,5 +15,6 @@ public:
 	Mano* getMano();
 	virtual Carta* pedirCarta(Mazo*)=0;
 	virtual bool sePaso()=0;
+	virtual std::string getNickname() = 0;
 	virtual void toString()=0;
 };

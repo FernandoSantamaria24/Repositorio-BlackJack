@@ -35,6 +35,9 @@ bool Jugador::sePaso()
 	}
 	return true;
 }
+std::string Jugador::getNickname(){
+	return nickname;
+}
 //Método toString de la clase JUgador
 //Muestra cada una de las cartas del jugador con sus valores respectivos 
 void Jugador::toString(){
