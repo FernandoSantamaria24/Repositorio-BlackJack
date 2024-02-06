@@ -87,10 +87,6 @@ void Lista::borrarNodoJugador(JugadorGenerico* Jugador)
 	tmp2->next = tmp->next;
 	delete tmp;
 }
-//Método encargado de mover el jugador cada vez que el juego lo desee
-Nodo* Lista::siguienteJugador(){
-	return nullptr;
-}
 void Lista::guardarLista(std::ofstream file)
 {
 	Nodo* aux = inicio;

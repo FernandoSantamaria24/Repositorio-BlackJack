@@ -3,8 +3,7 @@
 //Main de pruebas 
 int main() {
     int opcion;
-    Mazo* mazoNuevo = new Mazo();
-    Juego* juegoNuevo=new Juego(mazoNuevo);
+    Juego juegoNuevo;
     do {
         // Pantalla inicial
         std::cout << "1) Nuevo Juego: Inicia un juego nuevo de Blackjack\n" << std::endl;
@@ -16,7 +15,7 @@ int main() {
         switch (opcion) {
         case 1:
             system("cls");
-            juegoNuevo->jugar();
+            juegoNuevo.jugar();
             break;
         case 2:
             system("cls");
@@ -30,8 +29,6 @@ int main() {
             system("cls");
             std::cout << "Opcion no valida. Intente de nuevo.\n" << std::endl;
         }
-
     } while (opcion != 3);
-    delete juegoNuevo;
     return 0;
 }

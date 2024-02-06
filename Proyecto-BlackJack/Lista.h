@@ -13,7 +13,6 @@ public:
 	Nodo* buscaPersona(JugadorGenerico*);
 	bool buscarNombreJugador(std::string);
 	void borrarNodoJugador(JugadorGenerico*);
-	Nodo* siguienteJugador();
 	void guardarLista(std::ofstream);
 	void leerLista(std::ifstream);
 	bool listaVacia(); 

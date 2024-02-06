@@ -4,15 +4,14 @@
 #include<fstream>
 class Juego {
 private:
-	Mazo* baraja;
+	Mazo baraja;
 	Lista listaJugadores;
 public:
-	Juego(Mazo*);
+	Juego();
 	~Juego();
 	bool ingresoJugadores();
 	void jugar();
 	void toString();
-
 	void guardarJuego();
 	void leerJuego();
 };
