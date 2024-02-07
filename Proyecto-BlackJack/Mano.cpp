@@ -49,8 +49,7 @@ void Mano::limpiar(){
 	cant = 0;
 }
 //Suma la cantidad de puntos que el usuario tiene hasta el momento
-int Mano::getPuntos()
-{
+int Mano::getPuntos(){
 	int sum = 0;
 	for (int i = 0; i < 9; i++){
 		if (cartas[i]!=nullptr) {

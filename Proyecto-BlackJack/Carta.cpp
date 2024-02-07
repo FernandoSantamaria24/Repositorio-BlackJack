@@ -69,7 +69,42 @@ Carta* Carta::leerCarta(std::ifstream& file)
 	return nuevaCarta;
 }
 //Método mostrar clase Carta
+//Muestra el valor de la carta y su palo
 void Carta::toString(){
-	std::cout << valor;
-	//Realizar un random con palo
+	if (valor==1) {
+		std::cout << "A";
+	}
+	else {
+	std::cout <<valor<< std::endl;
+	}
+	if (valor==11||valor==12||valor==13) {
+		switch (palo){
+		case 1:
+			std::cout <<"J  " << std::endl;
+			break;
+		case 2:
+			std::cout << "Q  " << std::endl;
+			break;
+		case 3:
+			std::cout << "K  " << std::endl;
+			break;
+		default:
+			std::cout << "T  " << std::endl;
+			break;
+		}
+	}
+	switch (palo){
+	case 1:
+		std::cout << "E  " << std::endl;
+		break;
+	case 2:
+		std::cout << "C  " << std::endl;
+		break;
+	case 3:
+		std::cout << "D  " << std::endl;
+		break;
+	case 4:
+		std::cout << "T  " << std::endl;
+		break;
+	}
 }

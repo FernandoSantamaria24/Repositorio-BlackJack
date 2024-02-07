@@ -1,5 +1,4 @@
 #include "Juego.h"
-#include "Jugador.h"
 #include<fstream>
 //Constructor sin parámetros de la clase Juego
 Juego::Juego(){}
