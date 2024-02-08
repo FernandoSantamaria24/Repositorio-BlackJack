@@ -70,6 +70,6 @@ JugadorGenerico* Dealer::leerDealer(std::ifstream& file)
 //Método toString de la clase Dealer
 //Muestra las cartas del Dealer dentro del juego
 void Dealer::toString(){
-	std::cout << nickname << ":\n      Mano: ";
+	std::cout << nickname << ":   Mano: ";
 	mano->toString();
 }

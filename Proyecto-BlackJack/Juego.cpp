@@ -23,6 +23,7 @@ bool Juego::ingresoJugadores(){
 		Dealer* dealer = new Dealer("Dealer", manoD);
 		listaJugadores.insertarNodoJugador(dealer);
 		while (cantJugadores < cantIngresada) {
+			//Ingresar la cantidad de  jugadores encogidos por el usuario >=1 && >7
 			std::string nombre;
 			std::cout << "\nNickname:  " << std::endl;
 			std::cin >> nombre;
@@ -41,6 +42,8 @@ bool Juego::ingresoJugadores(){
 				std::cout << "Favor de escoger algun otro nombre diferente\n" << std::endl;
 			}
 		}
+		//Ingresa las xartas de cada jugador 1 por una en orden de la lista
+		//Esto permite que los jugadores tengan siempre cartas diferentes y estas no se repitan durante el juego de cada uno
 		int contCartas = 0;
 		Nodo* jugadoresIngresados = listaJugadores.getInicio();
 		while (contCartas<2) {
@@ -55,6 +58,7 @@ bool Juego::ingresoJugadores(){
 				}
 			}
 		}
+		//Al ingresar jugadores y cartas se retorna true para empezar el juego en su totalidad
 		respuesta = true;
 		}else {
 		system("cls");
@@ -74,20 +78,22 @@ void Juego::verificacion(Nodo* dealer){
 		dealer->dato->pedirCarta(&baraja);
 	}
 	else {
+		std::cout << "RESULTADOS JUEGO ACTUAL\n" << std::endl;
+		dealer->dato->toString(); std::cout << "------> CASA\n";
 		while (jugadores!=dealer) {
 			if(jugadores!=nullptr){
 			//Si la suma de cartas es menor a la casa GANA
 			if (jugadores->dato->getMano()->getPuntos() < dealer->dato->getMano()->getPuntos()) {
-				std::cout << "Jugador: " << jugadores->dato->getNickname() << " LE GANO A LA CASA" << std::endl;
+				jugadores->dato->toString(); std::cout << "------> LE GANO A LA CASA\n" << std::endl;
 			}
 			else {
 				//Si la suma de cartas es mayor a la casa PIERDE
 				if (jugadores->dato->getMano()->getPuntos() > dealer->dato->getMano()->getPuntos()) {
-					std::cout << "Jugador: " << jugadores->dato->getNickname() << " PERDIO CONTRA LA CASA" << std::endl;
+					jugadores->dato->toString(); std::cout << "------> PERDIO CONTRA LA CASA" << std::endl;
 				}
 				//Si la suma de cartas es igual a la casa EMPATA
 				else {
-					std::cout << "Jugador: " << jugadores->dato->getNickname() << " EMPATO CONTRA LA CASA" << std::endl;
+					jugadores->dato->toString(); std::cout << "------> EMPATO CONTRA LA CASA" << std::endl;
 				}
 			}
 			jugadores = jugadores->next;
@@ -167,8 +173,9 @@ void Juego::jugar(){
 				}
 			}
 		}
+		//Si llegamos al lugar de la casa entonces hacemos la verificacion de los jugadores contra la casa
 		else {
-			//verificacion(actual);//Muestra los jugadores y como quedaron dentro del juego
+			verificacion(actual);
 			std::cout << "\nDesea repetir el juego con los mismos jugadores (C)\n" <<"retornar a la pantalla inicial (S)\n" << std::endl;
 			std::cin >> opcionJuego;
 			if (opcionJuego=="C"||opcionJuego == "c") {
@@ -177,7 +184,6 @@ void Juego::jugar(){
 				actual = actual->next;
 				opcionJuego = "C";
 				continuidad = true;
-				system("cls");
 			}
 			else {
 				if (opcionJuego=="S" || opcionJuego == "s") {
