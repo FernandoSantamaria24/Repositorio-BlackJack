@@ -18,23 +18,20 @@ Mano::~Mano(){
 //Agrega una carta a la mano del jugador seleccionado
 //Solo se pueden agregar una cantidad de 10 cartas a la mano de cada jugador
 Carta* Mano::agregarCarta(Mazo* m){
-	if (cant<9) {
+	const int limiteCartas = 9;
+	if (cant < limiteCartas) {
 		Carta* nuevaCarta = m->tomarCarta();
+
 		if (nuevaCarta != nullptr) {
-			cartas[cant] = nuevaCarta;
-			std::cout << "Carta tomada\n" << std::endl;
-			cant++;
-			return nuevaCarta;
-		}
-		else {
-			std::cout << "Ya no quedan cartas en el mazo\n" << std::endl;
+			cartas[cant++] = nuevaCarta;
 			return nullptr;
 		}
 	}
 	else {
-		std::cout << "Ya no se pueden pedir cartas (limite completado)\n" << std::endl;
-		return nullptr;
+		std::cout << "Error: Se alcanzó el límite de cartas en la mano\n" << std::endl;
 	}
+
+	return nullptr;
 }
 //Limpia la mano para que el jugador pueda volver a jugar otra partida
 //Se vuelve a rellenar con valores de tipo nullptr
@@ -112,9 +109,8 @@ Mano* Mano::leerMano(std::ifstream& file)
 }
 //Método para mostrar las cartas de la mano para cada jugador
 void Mano::toString(){
-	for (int i = 0; i < 9; i++)
-	{
+	for (int i = 0; i < cant; i++){
 	 cartas[i]->toString();
-	 std::cout << "    ||    ";
+	 std::cout << "  ";
 	}
 }

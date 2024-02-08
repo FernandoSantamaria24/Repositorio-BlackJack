@@ -2,7 +2,9 @@
 #include "Jugador.h"
 #include<fstream>
 //Constructor sin parámetros de la clase Juego
-Juego::Juego(){}
+Juego::Juego(){
+	baraja.inicializador();
+}
 //Destructor de la clase Juego
 Juego::~Juego(){}
 //Método encargado de ingresar los jugadores dentro del juego de BlackJack
@@ -46,6 +48,7 @@ bool Juego::ingresoJugadores(){
 //Método Jugar encargado de toda la lógica del juego BlackJack
 void Juego::jugar(){
 	int opcionJuego=0;
+	baraja.barajar();
 	std::cout << "----------------JUEGO BLACKJACK----------------\n" << std::endl;
 	//En cuanto se logren ingresar todos los usuarios dentro del juego inicia el juego en su totalidad
 	if (ingresoJugadores()!=false) {
@@ -55,13 +58,19 @@ void Juego::jugar(){
 		//El juego termina cuando... (por asignar)
 		//VERIFICACIÓN DE JUEGO PARA FINALIZAR
 		while(opcionJuego!=5) {
-		system("cls");
-		std::cout <<"JUGADOR ACTUAL: " <<actual->dato->getNickname() << "\n";
+		system("cls"); 
+		actual->dato->toString();
 		std::cout << "\n 1(D)eme Carta   -   2(P)asar   -   3(G)uardar Partida   -   4(S)alir   \n" << std::endl;
 		std::cin >> opcionJuego;
 		//Según la opcion desea se ejecuta una opción diferente en el sistema
 			if(opcionJuego==1){
 			std::cout << "Carta optenida\n" << std::endl;
+			if (actual->dato->sePaso()==false) {
+				actual->dato->pedirCarta(&baraja);
+			}
+			else {
+				opcionJuego = 2;
+			}
 			}else{
 				if (opcionJuego==2) {
 					system("cls");
@@ -75,8 +84,8 @@ void Juego::jugar(){
 				}
 				else {
 					if (opcionJuego == 3) {
-						system("cls");
 						std::cout << "Guardanda partida...\n" << std::endl;
+						system("cls");
 					}
 					else {
 						if (opcionJuego==4) {

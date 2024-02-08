@@ -75,36 +75,39 @@ void Carta::toString(){
 		std::cout << "A";
 	}
 	else {
-	std::cout <<valor<< std::endl;
+	std::cout <<valor;
 	}
 	if (valor==11||valor==12||valor==13) {
 		switch (palo){
 		case 1:
-			std::cout <<"J  " << std::endl;
+			std::cout <<"J";
 			break;
 		case 2:
-			std::cout << "Q  " << std::endl;
+			std::cout << "Q" ;
 			break;
 		case 3:
-			std::cout << "K  " << std::endl;
+			std::cout << "K";
 			break;
 		default:
-			std::cout << "T  " << std::endl;
+			std::cout << "T" ;
 			break;
 		}
 	}
+	else {
+
 	switch (palo){
 	case 1:
-		std::cout << "E  " << std::endl;
+		std::cout << "E";
 		break;
 	case 2:
-		std::cout << "C  " << std::endl;
+		std::cout << "C";
 		break;
 	case 3:
-		std::cout << "D  " << std::endl;
+		std::cout << "D";
 		break;
 	case 4:
-		std::cout << "T  " << std::endl;
+		std::cout << "T";
 		break;
+	}
 	}
 }

@@ -17,10 +17,6 @@ Carta* Jugador::pedirCarta(Mazo* mazo){
 			mano->agregarCarta((Mazo*)&nuevaCarta); 
 			return nuevaCarta;
 		}
-		else {
-			std::cout << "No quedan más cartas en el mazo\n" << std::endl;
-			return nullptr;
-		}
 	}
 	else {
 		std::cout << "Ya no se pueden pedir más cartas\n" << std::endl;
@@ -40,9 +36,9 @@ JugadorGenerico* Jugador::copia()
 bool Jugador::sePaso()
 {
 	if (mano->getPuntos()>21) {
-		return false;
+		return true;
 	}
-	return true;
+	return false;
 }
 std::string Jugador::getNickname(){
 	return nickname;
@@ -64,6 +60,7 @@ JugadorGenerico* Jugador::leerJugador(std::ifstream& file)
 //Método toString de la clase JUgador
 //Muestra cada una de las cartas del jugador con sus valores respectivos 
 void Jugador::toString(){
+	std::cout <<nickname<<":\n      ";
 	mano->toString();
 }
 

@@ -110,15 +110,3 @@ Mazo* Mazo::leerMazo(std::ifstream& file)
     }
     return nuevoMazo;
 }
-//ToString de prueba para conocer si la cartas son ingresadas al mazo
-//MAL HECHO UTILIZADO SOLO PARA CUESTIONES DE PRUEBA
-void Mazo::toString()
-{
-    for (int i = 0; i < tam; i++)
-    {
-        std::cout << "Carta #"<<i << "\n";
-        std::cout << "Valor: " << carta[i]->getValor() << "   " << std::endl;
-        std::cout << "Palo: " << carta[i]->getPalo() << "  " << std::endl;
-        std::cout << "Lado: " << carta[i]->getBocaAbajo() << "\n  " << std::endl;
-    }
-}

@@ -15,5 +15,4 @@ public:
 	Mazo* copia();
 	void guardarMazo(std::ofstream&);
 	static Mazo* leerMazo(std::ifstream&);
-	void toString();
 };
