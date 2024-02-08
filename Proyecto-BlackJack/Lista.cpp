@@ -106,7 +106,6 @@ void Lista::leerLista()
 	//Aun falta retocar un poco mas el metodo
 	JugadorGenerico* aux = nullptr; 
 	std::string tipo;
-	std::string buffer;
 	std::ifstream file;
 	file.open("ListaJugadores.txt", std::ios::in); 
 
@@ -124,7 +123,10 @@ void Lista::leerLista()
 			}
 			if (aux != NULL) {
 				insertarNodoJugador(aux);
-			}
+			} 
+		}
+	}	
+	file.close();
 			//while (std::getline(file, buffer)) {
 			//	std::istringstream linea{ buffer };
 			//	std::string nombre;
@@ -134,10 +136,7 @@ void Lista::leerLista()
 			//	JugadorGenerico* nuevoJugador = aux->dato->leerJugador(file)/*new Jugador(nombre, manoJugador)*/; 
 			//	insertarNodoJugador(nuevoJugador);
 			//	aux = aux->next;
-			//}
-		}
-	}	
-	file.close();
+			//} 
 }
 //Método que nos permite saber si la lista ya tiene o no algun elemento ya creado
 bool Lista::listaVacia()
