@@ -20,4 +20,5 @@ public:
 	virtual std::string getNickname() = 0;
 	virtual void toString()=0;
 	virtual void guardarJugador(std::ofstream&) = 0;
+	virtual void leerJugador(std::ifstream&) = 0;
 };

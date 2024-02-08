@@ -87,10 +87,11 @@ void Lista::borrarNodoJugador(JugadorGenerico* Jugador)
 	tmp2->next = tmp->next;
 	delete tmp;
 }
-void Lista::guardarLista(std::ofstream file)
+void Lista::guardarLista()
 {
-	Nodo* aux = inicio;
-	file.open("ListaJugadores.txt");
+	Nodo* aux = inicio; 
+	std::ofstream file; 
+	file.open("ListaJugadores.txt", std::ios::out);  
 
 	if (file.is_open()) {
 		while (aux != nullptr) {
@@ -100,9 +101,28 @@ void Lista::guardarLista(std::ofstream file)
 	}
 	file.close();
 }
-void Lista::leerLista(std::ifstream)
+void Lista::leerLista()
 {
-	//Falta desarrollar este metodo
+	//Aun falta retocar un poco mas el metodo
+	Nodo* aux = inicio; 
+	std::string buffer;
+	std::ifstream file;
+	file.open("ListaJugadores.txt", std::ios::in); 
+
+	if (file.is_open()) {
+		while (aux != nullptr) {
+			while (std::getline(file, buffer)) {
+				std::istringstream linea{ buffer };
+				std::string nombre;
+				std::getline(linea, nombre);
+
+				Mano* manoJugador = aux->dato->getMano()->leerMano(file);
+				JugadorGenerico* nuevoJugador = aux->dato->leerJugador(file)/*new Jugador(nombre, manoJugador)*/; 
+				insertarNodoJugador(nuevoJugador);
+				aux = aux->next;
+			}
+		}
+	}	
 }
 //Método que nos permite saber si la lista ya tiene o no algun elemento ya creado
 bool Lista::listaVacia()
