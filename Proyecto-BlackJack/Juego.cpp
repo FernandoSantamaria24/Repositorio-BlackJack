@@ -173,7 +173,7 @@ void Juego::jugar(){
 				}
 			}
 		}
-		//Si llegamos al lugar de la casa entonces hacemos la verificacion de los jugadores contra la casa
+		//Si llegamos al lugar de la casa dentro de la listaJugadores entonces hacemos la verificacion de los jugadores contra la casa
 		else {
 			verificacion(actual);
 			std::cout << "\nDesea repetir el juego con los mismos jugadores (C)\n" <<"retornar a la pantalla inicial (S)\n" << std::endl;
