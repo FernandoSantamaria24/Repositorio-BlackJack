@@ -23,7 +23,8 @@ Carta* Mano::agregarCarta(Mazo* m){
 		Carta* nuevaCarta = m->tomarCarta();
 
 		if (nuevaCarta != nullptr) {
-			cartas[cant++] = nuevaCarta;
+			cartas[cant] = nuevaCarta;
+			cant++;
 			return nullptr;
 		}
 	}

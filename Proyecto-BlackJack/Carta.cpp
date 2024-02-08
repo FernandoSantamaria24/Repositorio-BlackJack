@@ -71,13 +71,13 @@ Carta* Carta::leerCarta(std::ifstream& file)
 //Método mostrar clase Carta
 //Muestra el valor de la carta y su palo
 void Carta::toString(){
-	if (valor==1) {
+	if (valor==1||valor==11) {
 		std::cout << "A";
 	}
 	else {
 	std::cout <<valor;
 	}
-	if (valor==11||valor==12||valor==13) {
+	if (valor==12||valor==13) {
 		switch (palo){
 		case 1:
 			std::cout <<"J";
@@ -94,7 +94,6 @@ void Carta::toString(){
 		}
 	}
 	else {
-
 	switch (palo){
 	case 1:
 		std::cout << "E";

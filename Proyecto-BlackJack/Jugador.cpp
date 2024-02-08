@@ -33,8 +33,7 @@ JugadorGenerico* Jugador::copia()
 	return new Jugador(nickname, mano);
 }
 //Método encargado de conocer si los jugadore la cantidad de cartas en mayor o no de 21 
-bool Jugador::sePaso()
-{
+bool Jugador::sePaso(){
 	if (mano->getPuntos()>21) {
 		return true;
 	}
@@ -60,7 +59,7 @@ JugadorGenerico* Jugador::leerJugador(std::ifstream& file)
 //Método toString de la clase JUgador
 //Muestra cada una de las cartas del jugador con sus valores respectivos 
 void Jugador::toString(){
-	std::cout <<nickname<<":\n      ";
+	std::cout <<nickname<<":\n      Mano: ";
 	mano->toString();
 }
 

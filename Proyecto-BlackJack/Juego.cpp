@@ -4,6 +4,7 @@
 //Constructor sin parámetros de la clase Juego
 Juego::Juego(){
 	baraja.inicializador();
+	baraja.barajar();
 }
 //Destructor de la clase Juego
 Juego::~Juego(){}
@@ -47,32 +48,27 @@ bool Juego::ingresoJugadores(){
 }
 //Método Jugar encargado de toda la lógica del juego BlackJack
 void Juego::jugar(){
-	int opcionJuego=0;
-	baraja.barajar();
+	std::string opcionJuego;
 	std::cout << "----------------JUEGO BLACKJACK----------------\n" << std::endl;
 	//En cuanto se logren ingresar todos los usuarios dentro del juego inicia el juego en su totalidad
 	if (ingresoJugadores()!=false) {
 		system("cls");
+		baraja.barajar();
 		Nodo* actual = listaJugadores.getInicio();
 		std::cout << "Bienvenido al juego blackjack\n" << std::endl;
 		//El juego termina cuando... (por asignar)
 		//VERIFICACIÓN DE JUEGO PARA FINALIZAR
-		while(opcionJuego!=5) {
+		while(opcionJuego!="J") {
 		system("cls"); 
 		actual->dato->toString();
-		std::cout << "\n 1(D)eme Carta   -   2(P)asar   -   3(G)uardar Partida   -   4(S)alir   \n" << std::endl;
+		std::cout << "\n        (D)eme Carta   -   (P)asar   -   (G)uardar Partida   -   (S)alir   \n" << std::endl;
 		std::cin >> opcionJuego;
 		//Según la opcion desea se ejecuta una opción diferente en el sistema
-			if(opcionJuego==1){
+			if(opcionJuego == "D"||opcionJuego == "d"){
 			std::cout << "Carta optenida\n" << std::endl;
-			if (actual->dato->sePaso()==false) {
 				actual->dato->pedirCarta(&baraja);
-			}
-			else {
-				opcionJuego = 2;
-			}
 			}else{
-				if (opcionJuego==2) {
+				if (opcionJuego == "P" || opcionJuego == "p") {
 					system("cls");
 					if (actual->next!=nullptr) {
 						actual = actual->next;
@@ -83,12 +79,12 @@ void Juego::jugar(){
 					}
 				}
 				else {
-					if (opcionJuego == 3) {
+					if (opcionJuego == "G" || opcionJuego == "g") {
 						std::cout << "Guardanda partida...\n" << std::endl;
 						system("cls");
 					}
 					else {
-						if (opcionJuego==4) {
+						if (opcionJuego=="S" || opcionJuego == "s") {
 							system("cls");
 							std::cout << "Saliendo...\n" << std::endl;
 							exit(0);
