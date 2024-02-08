@@ -1,5 +1,6 @@
 #include "Juego.h"
 #include "Jugador.h"
+#include "Dealer.h"
 #include<fstream>
 //Constructor sin parámetros de la clase Juego
 Juego::Juego(){
@@ -16,19 +17,22 @@ bool Juego::ingresoJugadores(){
 		std::cout << "Ingrese la cantidad de jugadores (Maximo 7):  " << std::endl;
 		int cantJugadores = 0;
 		int cantIngresada = 0;
-		std::cin >> cantJugadores;
-	if (cantJugadores > 0 && cantJugadores <= 7) {
-		while (cantIngresada <= cantJugadores) {
+		std::cin >> cantIngresada;
+	if (cantIngresada >= 1 && cantIngresada <= 7) {
+		Mano* manoD = new Mano();
+		Dealer* dealer = new Dealer("Dealer", manoD);
+		listaJugadores.insertarNodoJugador(dealer);
+		while (cantJugadores < cantIngresada) {
 			std::string nombre;
 			std::cout << "\nNickname:  " << std::endl;
 			std::cin >> nombre;
 			if (listaJugadores.buscarNombreJugador(nombre) != true) {
-				Mano* manoNueva = new Mano();
-				Jugador* jugadorIngreso = new Jugador(nombre, manoNueva);
+				Mano* manoJ = new Mano();
+				Jugador* jugadorIngreso = new Jugador(nombre,manoJ);
 				listaJugadores.insertarNodoJugador(jugadorIngreso);
 				system("cls");
 				std::cout << "Jugador Ingresado\n" << listaJugadores.buscaPersona(jugadorIngreso)->dato->getNickname() << "\n" << std::endl;
-				cantIngresada++;
+				cantJugadores++;
 				std::cout << "----------------JUEGO BLACKJACK----------------\n" << std::endl;
 				std::cout << "Digite nickname del siguiente jugador\n" << std::endl;
 			}
@@ -44,32 +48,84 @@ bool Juego::ingresoJugadores(){
 		cantErrores++;
 		}
 	}
+	std::cout << "La cantidad de jugadores es invalida (Maximo 7)\n" << std::endl;
 	return respuesta;
+}
+//Método encargado de decirnos que jugadores perdieron,ganaron o empataron con la casa
+//Método se activa cuando la casa de toda la vuelta a la mesa de juego
+void Juego::verificacion(Nodo* dealer){
+	Nodo* jugadores = listaJugadores.getInicio()->next;
+	//Mientra dealer sus cartas sean menores a 21 sigue sumando cartas a su mazo
+	if (dealer->dato->getMano()->getPuntos()<16) {
+		dealer->dato->pedirCarta(&baraja);
+	}
+	else {
+		while (jugadores!=dealer) {
+			if(jugadores!=nullptr){
+			//Si la suma de cartas es menor a la casa GANA
+			if (jugadores->dato->getMano()->getPuntos() < dealer->dato->getMano()->getPuntos()) {
+				std::cout << "Jugador: " << jugadores->dato->getNickname() << " LE GANO A LA CASA" << std::endl;
+			}
+			else {
+				//Si la suma de cartas es mayor a la casa PIERDE
+				if (jugadores->dato->getMano()->getPuntos() > dealer->dato->getMano()->getPuntos()) {
+					std::cout << "Jugador: " << jugadores->dato->getNickname() << " PERDIO CONTRA LA CASA" << std::endl;
+				}
+				//Si la suma de cartas es igual a la casa EMPATA
+				else {
+					std::cout << "Jugador: " << jugadores->dato->getNickname() << " EMPATO CONTRA LA CASA" << std::endl;
+				}
+			}
+			jugadores = jugadores->next;
+			}
+		}
+	}
+}
+//Si la partida es continuada con los mismos jugadores limpia la mano de cada uno de ellos
+void Juego::limpiarJugadoresActual(){
+	Nodo* actual = listaJugadores.getInicio();
+	//Mientras se encuentre un jugador en la lista se le limpia la mano actual
+	if(actual!=nullptr){
+			actual->dato->getMano()->limpiar();
+			actual = actual->next;
+	}
 }
 //Método Jugar encargado de toda la lógica del juego BlackJack
 void Juego::jugar(){
-	std::string opcionJuego;
+	std::string opcionJuego = "C";
+	bool continuidad = true;
 	std::cout << "----------------JUEGO BLACKJACK----------------\n" << std::endl;
 	//En cuanto se logren ingresar todos los usuarios dentro del juego inicia el juego en su totalidad
+	//En caso de no ser posible ingresar los jugadores se enviará un mensaje de error 
 	if (ingresoJugadores()!=false) {
-		system("cls");
 		baraja.barajar();
-		Nodo* actual = listaJugadores.getInicio();
+		system("cls");
+		Nodo* actual = listaJugadores.getInicio()->next;
 		std::cout << "Bienvenido al juego blackjack\n" << std::endl;
 		//El juego termina cuando... (por asignar)
 		//VERIFICACIÓN DE JUEGO PARA FINALIZAR
-		while(opcionJuego!="J") {
-		system("cls"); 
+		while(continuidad==true||opcionJuego=="C") {
+		if(actual!=listaJugadores.getInicio()){
+		system("cls");
 		actual->dato->toString();
 		std::cout << "\n        (D)eme Carta   -   (P)asar   -   (G)uardar Partida   -   (S)alir   \n" << std::endl;
 		std::cin >> opcionJuego;
 		//Según la opcion desea se ejecuta una opción diferente en el sistema
 			if(opcionJuego == "D"||opcionJuego == "d"){
-			std::cout << "Carta optenida\n" << std::endl;
-				actual->dato->pedirCarta(&baraja);
-			}else{
-				if (opcionJuego == "P" || opcionJuego == "p") {
+				if (!actual->dato->sePaso()) {
+			actual->dato->pedirCarta(&baraja);
+				}else {
 					system("cls");
+					if (actual->next != nullptr) {
+						actual = actual->next;
+					}
+					else {
+						actual = listaJugadores.getInicio();
+					}
+				}
+			}
+			else{
+				if (opcionJuego == "P" || opcionJuego == "p") {
 					if (actual->next!=nullptr) {
 						actual = actual->next;
 					}
@@ -77,6 +133,7 @@ void Juego::jugar(){
 					actual= listaJugadores.getInicio();
 					std::cout << "Siguiente jugador\n" << std::endl;
 					}
+					system("cls");
 				}
 				else {
 					if (opcionJuego == "G" || opcionJuego == "g") {
@@ -90,11 +147,34 @@ void Juego::jugar(){
 							exit(0);
 						}
 						else {
-							std::cout << "La opcion deseada no se encuentra dentro del sistema\n" << std::endl;
+							std::cout << "Opcion no encontrada en el juego\n" << std::endl;
 						}
 					}
 				}
 			}
+		}
+		else {
+			//verificacion(actual);//Muestra los jugadores y como quedaron dentro del juego
+			std::cout << "\nDesea repetir el juego con los mismos jugadores (C)\n" <<"retornar a la pantalla inicial (S)\n" << std::endl;
+			std::cin >> opcionJuego;
+			if (opcionJuego=="C"||opcionJuego == "c") {
+				limpiarJugadoresActual();//ARREGLAR
+				baraja.barajar();//OBSERVACIONES
+				actual = actual->next;
+				opcionJuego = "C";
+				continuidad = true;
+				system("cls");
+			}
+			else {
+				if (opcionJuego=="S" || opcionJuego == "s") {
+					continuidad = false;
+				}
+				else {
+					std::cout << "\nLa opcion dada no es valida por lo tanto el juego acabara";
+					continuidad = false;
+				}
+			}
+		}
 		}
 		system("cls");
 		std::cout << "El juego llego a su final\n" << std::endl;

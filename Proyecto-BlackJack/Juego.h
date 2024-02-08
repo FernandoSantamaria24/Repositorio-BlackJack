@@ -10,6 +10,8 @@ public:
 	Juego();
 	~Juego();
 	bool ingresoJugadores();
+	void verificacion(Nodo*);
+	void limpiarJugadoresActual();
 	void jugar();
 	void toString();
 	void guardarJuego();

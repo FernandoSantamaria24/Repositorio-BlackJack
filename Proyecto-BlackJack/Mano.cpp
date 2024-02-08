@@ -37,12 +37,9 @@ Carta* Mano::agregarCarta(Mazo* m){
 //Limpia la mano para que el jugador pueda volver a jugar otra partida
 //Se vuelve a rellenar con valores de tipo nullptr
 void Mano::limpiar(){
-	for (int i = 0; i < 9; ++i) {
-		if(cartas[i]!=nullptr) {
+	for (int i = 0; i < cant; ++i) {
 			delete cartas[i]; // Elimina la carta actual si existe
 			cartas[i] = nullptr; // Asigna nullptr para indicar que no hay carta en esa posición
-		}
-	
 	}
 	cant = 0;
 }

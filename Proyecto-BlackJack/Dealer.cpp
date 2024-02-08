@@ -15,10 +15,6 @@ Carta* Dealer::pedirCarta(Mazo* mazo){
 			mano->agregarCarta((Mazo*)&nuevaCarta);
 			return nuevaCarta;
 		}
-		else {
-			std::cout << "No quedan más cartas en el mazo\n" << std::endl;
-			return nullptr;
-		}
 	}
 	else {
 		std::cout << "Ya no se pueden pedir más cartas\n" << std::endl;
@@ -38,9 +34,9 @@ Mano* Dealer::getMano()
 bool Dealer::sePaso()
 {
 	if (mano->getPuntos() > 21) {
-		return false;
+		return true;
 	}
-	return true;
+	return false;
 }
 
 
@@ -58,8 +54,7 @@ std::string Dealer::getNickname()
 {
 	return nickname;
 }
-void Dealer::guardarJugador(std::ofstream& file)
-{
+void Dealer::guardarJugador(std::ofstream& file){
 	file << nickname << mano;
 }
 JugadorGenerico* Dealer::leerDealer(std::ifstream& file)
@@ -75,11 +70,6 @@ JugadorGenerico* Dealer::leerDealer(std::ifstream& file)
 //Método toString de la clase Dealer
 //Muestra las cartas del Dealer dentro del juego
 void Dealer::toString(){
-	std::cout << nickname << "\n";
-	for (int i = 0; i < 9; i++)
-	{
-		if (mano->getCartaPosicion(i)->getBocaAbajo()==true) {
-			mano->getCartaPosicion(i)->toString();
-		}
-	}
+	std::cout << nickname << ":\n      Mano: ";
+	mano->toString();
 }
