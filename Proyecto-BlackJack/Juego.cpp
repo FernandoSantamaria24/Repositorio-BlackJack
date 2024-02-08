@@ -41,6 +41,20 @@ bool Juego::ingresoJugadores(){
 				std::cout << "Favor de escoger algun otro nombre diferente\n" << std::endl;
 			}
 		}
+		int contCartas = 0;
+		Nodo* jugadoresIngresados = listaJugadores.getInicio();
+		while (contCartas<2) {
+			if (jugadoresIngresados!=nullptr) {
+				jugadoresIngresados->dato->pedirCarta(&baraja);
+				if (jugadoresIngresados->next==nullptr) {
+					jugadoresIngresados = listaJugadores.getInicio();
+					contCartas++;
+				}
+				else {
+					jugadoresIngresados = jugadoresIngresados->next;
+				}
+			}
+		}
 		respuesta = true;
 		}else {
 		system("cls");
