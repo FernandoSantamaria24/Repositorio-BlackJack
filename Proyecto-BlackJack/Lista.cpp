@@ -104,25 +104,40 @@ void Lista::guardarLista()
 void Lista::leerLista()
 {
 	//Aun falta retocar un poco mas el metodo
-	Nodo* aux = inicio; 
+	JugadorGenerico* aux = nullptr; 
+	std::string tipo;
 	std::string buffer;
 	std::ifstream file;
 	file.open("ListaJugadores.txt", std::ios::in); 
 
 	if (file.is_open()) {
-		while (aux != nullptr) {
-			while (std::getline(file, buffer)) {
-				std::istringstream linea{ buffer };
-				std::string nombre;
-				std::getline(linea, nombre);
-
-				Mano* manoJugador = aux->dato->getMano()->leerMano(file);
-				JugadorGenerico* nuevoJugador = aux->dato->leerJugador(file)/*new Jugador(nombre, manoJugador)*/; 
-				insertarNodoJugador(nuevoJugador);
-				aux = aux->next;
+		while (!file.eof()) {
+			std::getline(file, tipo, '|');
+			if (tipo == "Jugador") {
+				aux = Jugador::leerJugador(file);
 			}
+			if (tipo == "Dealer") {
+				aux = Dealer::leerJugador(file);
+			}
+			if (file.eof()) {
+				break;
+			}
+			if (aux != NULL) {
+				insertarNodoJugador(aux);
+			}
+			//while (std::getline(file, buffer)) {
+			//	std::istringstream linea{ buffer };
+			//	std::string nombre;
+			//	std::getline(linea, nombre);
+
+			//	Mano* manoJugador = aux->dato->getMano()->leerMano(file);
+			//	JugadorGenerico* nuevoJugador = aux->dato->leerJugador(file)/*new Jugador(nombre, manoJugador)*/; 
+			//	insertarNodoJugador(nuevoJugador);
+			//	aux = aux->next;
+			//}
 		}
 	}	
+	file.close();
 }
 //Método que nos permite saber si la lista ya tiene o no algun elemento ya creado
 bool Lista::listaVacia()

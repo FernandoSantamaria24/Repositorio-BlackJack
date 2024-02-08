@@ -55,15 +55,15 @@ std::string Dealer::getNickname()
 	return nickname;
 }
 void Dealer::guardarJugador(std::ofstream& file){
-	file << nickname << mano;
+	file << "Dealer" << nickname << mano;
 }
-JugadorGenerico* Dealer::leerDealer(std::ifstream& file)
+JugadorGenerico* Dealer::leerJugador(std::ifstream& file)
 {
 	std::string nick; 
 	file >> nick; 
 
-	Mano* manoJugador = new Mano(); 
-	Dealer* nuevoDealer = new Dealer(nick, manoJugador); 
+	Mano* manoJugador = Mano::leerMano(file); 
+	Dealer* nuevoDealer = new Dealer(nick, manoJugador);  
 
 	return nuevoDealer; 
 }

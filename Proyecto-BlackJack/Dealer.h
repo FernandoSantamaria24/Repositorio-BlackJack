@@ -14,7 +14,7 @@ public:
 	void volteaSegunda(); //falta desarrollar
 	std::string getNickname();
 	void guardarJugador(std::ofstream&);
-	static JugadorGenerico* leerDealer(std::ifstream&);
+	static JugadorGenerico* leerJugador(std::ifstream&);
 	void toString();
 
 };

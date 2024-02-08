@@ -1,5 +1,7 @@
 #pragma once
 #include"Nodo.h"
+#include"Jugador.h"
+#include"Dealer.h"
 #include<fstream>
 #include<sstream>
 #include<string>

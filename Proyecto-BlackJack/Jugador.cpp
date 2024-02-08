@@ -6,7 +6,7 @@ Jugador::Jugador(std::string nombre, Mano* manoJugador) : JugadorGenerico(nombre
 //Desctructor de la clase Jugador
 Jugador::~Jugador()
 {
-	delete[] mano;
+	delete mano;
 }
 //Método encargado de pedir la carta de cada jugador en la clase de Jugador
 //Añade cada carta a la mano del jugadro determinado en el Juego
@@ -51,8 +51,8 @@ JugadorGenerico* Jugador::leerJugador(std::ifstream& file)
 	std::string nick;
 	file >> nick;
 
-	Mano* manoJugador = new Mano();
-	Jugador* jugadorNuevo = new Jugador(nick, manoJugador);
+	Mano* manoJugador = Mano::leerMano(file);
+	Jugador* jugadorNuevo = new Jugador(nick, manoJugador);  
 
 	return jugadorNuevo;
 }
