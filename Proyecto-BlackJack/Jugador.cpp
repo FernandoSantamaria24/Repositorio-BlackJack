@@ -59,7 +59,7 @@ JugadorGenerico* Jugador::leerJugador(std::ifstream& file)
 //Método toString de la clase JUgador
 //Muestra cada una de las cartas del jugador con sus valores respectivos 
 void Jugador::toString(){
-	std::cout <<nickname<<":\n      Mano: ";
+	std::cout <<nickname<<":\n ";
 	mano->toString();
 }
 

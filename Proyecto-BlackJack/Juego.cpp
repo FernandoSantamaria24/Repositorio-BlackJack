@@ -75,47 +75,6 @@ bool Juego::ingresoJugadores(){
 	std::cout << "La cantidad de jugadores es invalida (Maximo 7)\n" << std::endl;
 	return respuesta;
 }
-//Método encargado de decirnos que jugadores perdieron,ganaron o empataron con la casa
-//Método se activa cuando la casa de toda la vuelta a la mesa de juego
-void Juego::verificacion(){
-	Nodo* jugadores = listaJugadores.getInicio()->next;
-	//Mientra dealer sus cartas sean menores a 21 sigue sumando cartas a su mazo
-	if (listaJugadores.getInicio()->dato->getMano()->getPuntos()<16) {
-		listaJugadores.getInicio()->dato->pedirCarta(&baraja);
-	}
-	else {
-		std::cout << "RESULTADOS\n";
-		listaJugadores.getInicio()->dato->toString(); std::cout << "------> CASA\n";
-		while (jugadores!= listaJugadores.getInicio()) {
-			if(jugadores!=nullptr){
-			//Si la suma de cartas es menor a la casa GANA
-			if (jugadores->dato->getMano()->getPuntos() < listaJugadores.getInicio()->dato->getMano()->getPuntos()) {
-				jugadores->dato->toString(); std::cout << "------> LE GANO A LA CASA\n";
-			}
-			else {
-				//Si la suma de cartas es mayor a la casa PIERDE
-				if (jugadores->dato->getMano()->getPuntos() > listaJugadores.getInicio()->dato->getMano()->getPuntos()) {
-					jugadores->dato->toString(); std::cout << "------> PERDIO CONTRA LA CASA\n";
-				}
-				//Si la suma de cartas es igual a la casa EMPATA
-				else {
-					jugadores->dato->toString(); std::cout << "------> EMPATO CONTRA LA CASA\n";
-				}
-			}
-			jugadores = jugadores->next;
-			}
-		}
-	}
-}
-//Si la partida es continuada con los mismos jugadores limpia la mano de cada uno de ellos
-void Juego::limpiarJugadoresActual(){
-	Nodo* actual = listaJugadores.getInicio();
-	//Mientras se encuentre un jugador en la lista se le limpia la mano actual
-	while(actual!=nullptr){
-			actual->dato->getMano()->limpiar();
-			actual = actual->next;
-	}
-}
 //Método Jugar encargado de toda la lógica del juego BlackJack
 void Juego::jugar(){
 	std::string opcionJuego = "C";
@@ -127,17 +86,16 @@ void Juego::jugar(){
 		baraja.barajar();
 		system("cls");
 		Nodo* actual = listaJugadores.getInicio()->next;
-		std::cout << "Bienvenido al juego blackjack\n" << std::endl;
 		//El juego termina cuando... (por asignar)
 		//VERIFICACIÓN DE JUEGO PARA FINALIZAR
 		while(continuidad==true) {
 		system("cls");
+		std::cout << "Bienvenido al juego blackjack\n" << std::endl;
 		if(actual!=listaJugadores.getInicio()){
-		std::cout << "\nMANO DEALER\n";
 		listaJugadores.getInicio()->dato->toString();
-		std::cout << "\nMANO JUGADOR ACTUAL\n";
+		std::cout << "\nJUGADOR\n";
 		actual->dato->toString();
-		std::cout << "\n        (D)eme Carta   -   (P)asar   -   (G)uardar Partida   -   (S)alir   \n" << std::endl;
+		std::cout << "\n\n        (D)eme Carta   -   (P)asar   -   (G)uardar Partida   -   (S)alir   \n" << std::endl;
 		std::cin >> opcionJuego;
 		//Según la opcion desea se ejecuta una opción diferente en el sistema
 			if(opcionJuego == "D"||opcionJuego == "d"){
@@ -183,30 +141,64 @@ void Juego::jugar(){
 			}
 		}
 		else {
-		verificacion();//Si llegamos al lugar de la casa dentro de la listaJugadores entonces hacemos la verificacion de los jugadores contra la casa
-			std::cout << "Desea repetir el juego con los mismos jugadores (C)\n" <<"retornar a la pantalla inicial (S)\n";
-			std::cin >> opcionJuego;
-			if (opcionJuego=="C"||opcionJuego == "c") {
-				limpiarJugadoresActual();
-				baraja.barajar();//Revuelve las cartas 
-				ingresarCartasIniciales();//Ingresa cartas (2) a jugador
+			while(actual!=nullptr) {
 				actual = actual->next;
-				continuidad = true;
-			}
-			else {
-				if (opcionJuego=="S" || opcionJuego == "s") {
-					continuidad = false;
+				if (listaJugadores.getInicio()->dato->getMano()->getPuntos() < 16) {
+					listaJugadores.getInicio()->dato->pedirCarta(&baraja);
 				}
 				else {
-					std::cout << "\nLa opcion dada no es valida por lo tanto el juego acabara";
-					continuidad = false;
+					std::cout << "RESULTADOS\n";
+					listaJugadores.getInicio()->dato->toString(); std::cout << "------> CASA\n";
+					//Si la suma de cartas es menor a la casa GANA
+					if (actual->dato->getMano()->getPuntos() < listaJugadores.getInicio()->dato->getMano()->getPuntos()) {
+						actual->dato->toString(); std::cout << "------> LE GANO A LA CASA\n";
+					}
+					else {
+						//Si la suma de cartas es mayor a la casa PIERDE
+						if (actual->dato->getMano()->getPuntos() > listaJugadores.getInicio()->dato->getMano()->getPuntos()) {
+							actual->dato->toString(); std::cout << "------> PERDIO CONTRA LA CASA\n";
+						}
+						//Si la suma de cartas es igual a la casa EMPATA
+						else {
+							actual->dato->toString(); std::cout << "------> EMPATO CONTRA LA CASA\n";
+						}
+					}
+					std::string next;
+					if (next=="N"||next=="n") {
+						actual = actual->next;
+						system("cls");
+					}
+					else {
+						actual = nullptr;
+					}
 				}
 			}
+				std::cout << "\nDesea repetir el juego con los mismos jugadores (C)\n" << "retornar a la pantalla inicial (S)\n";
+				std::cin >> opcionJuego;
+				if (opcionJuego == "C" || opcionJuego == "c") {
+					listaJugadores.limpiarManoJugadores();
+					baraja.barajar();//Revuelve las cartas 
+					ingresarCartasIniciales();//Ingresa cartas (2) a cada jugador
+					actual = listaJugadores.getInicio()->next;
+					continuidad = true;
+				}
+				else {
+					if (opcionJuego == "S" || opcionJuego == "s") {
+						continuidad = false;
+					}
+					else {
+						std::cout << "\nLa opcion dada no es valida por lo tanto el juego acabara";
+						continuidad = false;
+					}
+				}
+			
+		
+			
 			}	
 		}
 		system("cls");
-		std::cout << "El juego llego a su final\n" << std::endl;
-		std::cout << "GRACIAS POR JUGAR EN NUESTRO SISTEMA DE BLACKJACK\n" << std::endl;
+		std::cout << "          EL JUEGO LLEGO A SU FINAL\n" << std::endl;
+		std::cout << "GRACIAS POR JUGAR EN NUESTRO SISTEMA  BLACKJACK\n" << std::endl;
 		exit(0);
 	}
 	else {
@@ -214,5 +206,3 @@ void Juego::jugar(){
 	}
 }
 
-void Juego::toString(){
-}

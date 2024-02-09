@@ -17,6 +17,7 @@ public:
 	Nodo* buscaPersona(JugadorGenerico*);
 	bool buscarNombreJugador(std::string);
 	void borrarNodoJugador(JugadorGenerico*);
+	void limpiarManoJugadores();
 	void guardarLista();
 	void leerLista();
 	bool listaVacia(); 

@@ -87,6 +87,15 @@ void Lista::borrarNodoJugador(JugadorGenerico* Jugador)
 	tmp2->next = tmp->next;
 	delete tmp;
 }
+// Si la partida es continuada con los mismos jugadores limpia la mano de cada uno de ellos
+void Lista::limpiarManoJugadores(){
+	Nodo* actual = inicio;
+		//Mientras se encuentre un jugador en la lista se le limpia la mano actual
+		while (actual != nullptr) {
+			actual->dato->getMano()->limpiar();
+			actual = actual->next;
+		}
+}
 void Lista::guardarLista()
 {
 	Nodo* aux = inicio; 

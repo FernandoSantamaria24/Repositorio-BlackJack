@@ -11,10 +11,7 @@ public:
 	~Juego();
 	void ingresarCartasIniciales();
 	bool ingresoJugadores();
-	void verificacion();
-	void limpiarJugadoresActual();
 	void jugar();
-	void toString();
 	void guardarJuego();
 	void leerJuego();
 };
