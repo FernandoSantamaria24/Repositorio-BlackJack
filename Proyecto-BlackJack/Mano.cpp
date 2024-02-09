@@ -54,8 +54,7 @@ int Mano::getPuntos(){
 	return sum;
 }
 //Este método nos permite retornar la cantidad de cartas que tiene cada mano
-int Mano::getCantidad()
-{
+int Mano::getCantidad(){
 	return cant;
 }
 //Este método nos permite saber la posicion de cierta carta en especifico, para así poder interactuar
@@ -108,7 +107,12 @@ Mano* Mano::leerMano(std::ifstream& file)
 //Método para mostrar las cartas de la mano para cada jugador
 void Mano::toString(){
 	for (int i = 0; i < cant; i++){
-	 cartas[i]->toString();
-	 std::cout << "  ";
+		if(cartas[i]->getBocaAbajo()==true) {
+			cartas[i]->toString();
+			std::cout << "  ";
+		}
+		else {
+			std::cout << "|CARTA OCULTA|";
+		}
 	}
 }

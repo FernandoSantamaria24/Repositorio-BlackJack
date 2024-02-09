@@ -25,8 +25,7 @@ int Carta::getPalo()
 	return palo;
 }
 
-bool Carta::getBocaAbajo()
-{
+bool Carta::getBocaAbajo(){
 	return bocaAbajo;
 }
 //Final métodos get clase Carta
@@ -44,9 +43,8 @@ void Carta::setBocaAbajo(bool b){
 }
 //Final métodos set clase Carta
 //Método que nos va a ayudar más adelante para voltear las cartas cuando se desee
-void Carta::voltear()
-{
-	bocaAbajo = false;
+void Carta::voltear(){
+	bocaAbajo = true;
 }
 //Método copia para no perder los valores de "Carta"
 Carta* Carta::copia()
@@ -92,8 +90,11 @@ void Carta::toString(){
 		case 3:
 			std::cout << "K";
 			break;
+		case 4:
+			std::cout << "T";
+			break;
 		default:
-			std::cout << "T" ;
+			std::cout << "K" ;
 			break;
 		}
 	}

@@ -12,8 +12,8 @@ Carta* Dealer::pedirCarta(Mazo* mazo){
 	if (!sePaso()) {
 		Carta* nuevaCarta = mano->agregarCarta(mazo);
 		if (nuevaCarta != nullptr) {
-			mano->agregarCarta((Mazo*)&nuevaCarta);
-			return nuevaCarta;
+				mano->agregarCarta((Mazo*)&nuevaCarta);
+				return nuevaCarta;	
 		}
 	}
 	else {
@@ -70,6 +70,6 @@ JugadorGenerico* Dealer::leerJugador(std::ifstream& file)
 //Método toString de la clase Dealer
 //Muestra las cartas del Dealer dentro del juego
 void Dealer::toString(){
-	std::cout << nickname << ":   Mano: ";
+	std::cout << nickname << ":    ";
 	mano->toString();
 }

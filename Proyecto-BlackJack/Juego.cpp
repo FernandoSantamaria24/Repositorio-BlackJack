@@ -84,22 +84,22 @@ void Juego::verificacion(){
 		listaJugadores.getInicio()->dato->pedirCarta(&baraja);
 	}
 	else {
-		std::cout << "RESULTADOS JUEGO ACTUAL\n" << std::endl;
+		std::cout << "RESULTADOS\n";
 		listaJugadores.getInicio()->dato->toString(); std::cout << "------> CASA\n";
 		while (jugadores!= listaJugadores.getInicio()) {
 			if(jugadores!=nullptr){
 			//Si la suma de cartas es menor a la casa GANA
 			if (jugadores->dato->getMano()->getPuntos() < listaJugadores.getInicio()->dato->getMano()->getPuntos()) {
-				jugadores->dato->toString(); std::cout << "------> LE GANO A LA CASA\n" << std::endl;
+				jugadores->dato->toString(); std::cout << "------> LE GANO A LA CASA\n";
 			}
 			else {
 				//Si la suma de cartas es mayor a la casa PIERDE
 				if (jugadores->dato->getMano()->getPuntos() > listaJugadores.getInicio()->dato->getMano()->getPuntos()) {
-					jugadores->dato->toString(); std::cout << "------> PERDIO CONTRA LA CASA" << std::endl;
+					jugadores->dato->toString(); std::cout << "------> PERDIO CONTRA LA CASA\n";
 				}
 				//Si la suma de cartas es igual a la casa EMPATA
 				else {
-					jugadores->dato->toString(); std::cout << "------> EMPATO CONTRA LA CASA" << std::endl;
+					jugadores->dato->toString(); std::cout << "------> EMPATO CONTRA LA CASA\n";
 				}
 			}
 			jugadores = jugadores->next;
@@ -130,9 +130,12 @@ void Juego::jugar(){
 		std::cout << "Bienvenido al juego blackjack\n" << std::endl;
 		//El juego termina cuando... (por asignar)
 		//VERIFICACIÓN DE JUEGO PARA FINALIZAR
-		while(continuidad==true||opcionJuego=="C") {
-		if(actual!=listaJugadores.getInicio()){
+		while(continuidad==true) {
 		system("cls");
+		if(actual!=listaJugadores.getInicio()){
+		std::cout << "\nMANO DEALER\n";
+		listaJugadores.getInicio()->dato->toString();
+		std::cout << "\nMANO JUGADOR ACTUAL\n";
 		actual->dato->toString();
 		std::cout << "\n        (D)eme Carta   -   (P)asar   -   (G)uardar Partida   -   (S)alir   \n" << std::endl;
 		std::cin >> opcionJuego;
@@ -163,7 +166,7 @@ void Juego::jugar(){
 				}
 				else {
 					if (opcionJuego == "G" || opcionJuego == "g") {
-						std::cout << "Guardanda partida...\n" << std::endl;
+						std::cout << "Guardando partida...\n" << std::endl;
 						system("cls");
 					}
 					else {
@@ -178,14 +181,15 @@ void Juego::jugar(){
 					}
 				}
 			}
-		}else {
-			//verificacion();//Si llegamos al lugar de la casa dentro de la listaJugadores entonces hacemos la verificacion de los jugadores contra la casa
-			std::cout << "\nDesea repetir el juego con los mismos jugadores (C)\n" <<"retornar a la pantalla inicial (S)\n" << std::endl;
+		}
+		else {
+		verificacion();//Si llegamos al lugar de la casa dentro de la listaJugadores entonces hacemos la verificacion de los jugadores contra la casa
+			std::cout << "Desea repetir el juego con los mismos jugadores (C)\n" <<"retornar a la pantalla inicial (S)\n";
 			std::cin >> opcionJuego;
 			if (opcionJuego=="C"||opcionJuego == "c") {
 				limpiarJugadoresActual();
-				baraja.barajar();
-				ingresarCartasIniciales();
+				baraja.barajar();//Revuelve las cartas 
+				ingresarCartasIniciales();//Ingresa cartas (2) a jugador
 				actual = actual->next;
 				continuidad = true;
 			}
@@ -198,7 +202,7 @@ void Juego::jugar(){
 					continuidad = false;
 				}
 			}
-		}
+			}	
 		}
 		system("cls");
 		std::cout << "El juego llego a su final\n" << std::endl;
