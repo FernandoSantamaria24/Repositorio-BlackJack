@@ -9,8 +9,9 @@ private:
 public:
 	Juego();
 	~Juego();
+	void ingresarCartasIniciales();
 	bool ingresoJugadores();
-	void verificacion(Nodo*);
+	void verificacion();
 	void limpiarJugadoresActual();
 	void jugar();
 	void toString();

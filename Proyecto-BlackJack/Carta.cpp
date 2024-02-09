@@ -75,9 +75,13 @@ void Carta::toString(){
 		std::cout << "A";
 	}
 	else {
-	std::cout <<valor;
+		if (valor>=12) {
+			std::cout <<"10";
+		}else{
+			std::cout << valor;
+		}
 	}
-	if (valor==12||valor==13) {
+	if (valor >= 12) {
 		switch (palo){
 		case 1:
 			std::cout <<"J";

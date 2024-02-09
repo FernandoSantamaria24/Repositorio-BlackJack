@@ -9,6 +9,26 @@ Juego::Juego(){
 }
 //Destructor de la clase Juego
 Juego::~Juego(){}
+//Método que permite darle dos cartas por jugador al iniciar un nuevo juego de BalckJACK
+//Cada jugador recibe dos cartas por juego
+void Juego::ingresarCartasIniciales(){
+	//Ingresa las cartas de cada jugador 1 por una en orden de la lista
+		//Esto permite que los jugadores tengan siempre cartas diferentes y estas no se repitan durante el juego de cada uno
+	int contCartas = 0;
+	Nodo* jugadoresIngresados = listaJugadores.getInicio();
+	while (contCartas < 2) {
+		if (jugadoresIngresados != nullptr) {
+			jugadoresIngresados->dato->pedirCarta(&baraja);
+			if (jugadoresIngresados->next == nullptr) {
+				jugadoresIngresados = listaJugadores.getInicio();
+				contCartas++;
+			}
+			else {
+				jugadoresIngresados = jugadoresIngresados->next;
+			}
+		}
+	}
+}
 //Método encargado de ingresar los jugadores dentro del juego de BlackJack
 bool Juego::ingresoJugadores(){
 	bool respuesta = false;
@@ -42,22 +62,8 @@ bool Juego::ingresoJugadores(){
 				std::cout << "Favor de escoger algun otro nombre diferente\n" << std::endl;
 			}
 		}
-		//Ingresa las xartas de cada jugador 1 por una en orden de la lista
-		//Esto permite que los jugadores tengan siempre cartas diferentes y estas no se repitan durante el juego de cada uno
-		int contCartas = 0;
-		Nodo* jugadoresIngresados = listaJugadores.getInicio();
-		while (contCartas<2) {
-			if (jugadoresIngresados!=nullptr) {
-				jugadoresIngresados->dato->pedirCarta(&baraja);
-				if (jugadoresIngresados->next==nullptr) {
-					jugadoresIngresados = listaJugadores.getInicio();
-					contCartas++;
-				}
-				else {
-					jugadoresIngresados = jugadoresIngresados->next;
-				}
-			}
-		}
+		//Ingresar cartas a los jugadores nuevos
+		ingresarCartasIniciales();
 		//Al ingresar jugadores y cartas se retorna true para empezar el juego en su totalidad
 		respuesta = true;
 		}else {
@@ -71,24 +77,24 @@ bool Juego::ingresoJugadores(){
 }
 //Método encargado de decirnos que jugadores perdieron,ganaron o empataron con la casa
 //Método se activa cuando la casa de toda la vuelta a la mesa de juego
-void Juego::verificacion(Nodo* dealer){
+void Juego::verificacion(){
 	Nodo* jugadores = listaJugadores.getInicio()->next;
 	//Mientra dealer sus cartas sean menores a 21 sigue sumando cartas a su mazo
-	if (dealer->dato->getMano()->getPuntos()<16) {
-		dealer->dato->pedirCarta(&baraja);
+	if (listaJugadores.getInicio()->dato->getMano()->getPuntos()<16) {
+		listaJugadores.getInicio()->dato->pedirCarta(&baraja);
 	}
 	else {
 		std::cout << "RESULTADOS JUEGO ACTUAL\n" << std::endl;
-		dealer->dato->toString(); std::cout << "------> CASA\n";
-		while (jugadores!=dealer) {
+		listaJugadores.getInicio()->dato->toString(); std::cout << "------> CASA\n";
+		while (jugadores!= listaJugadores.getInicio()) {
 			if(jugadores!=nullptr){
 			//Si la suma de cartas es menor a la casa GANA
-			if (jugadores->dato->getMano()->getPuntos() < dealer->dato->getMano()->getPuntos()) {
+			if (jugadores->dato->getMano()->getPuntos() < listaJugadores.getInicio()->dato->getMano()->getPuntos()) {
 				jugadores->dato->toString(); std::cout << "------> LE GANO A LA CASA\n" << std::endl;
 			}
 			else {
 				//Si la suma de cartas es mayor a la casa PIERDE
-				if (jugadores->dato->getMano()->getPuntos() > dealer->dato->getMano()->getPuntos()) {
+				if (jugadores->dato->getMano()->getPuntos() > listaJugadores.getInicio()->dato->getMano()->getPuntos()) {
 					jugadores->dato->toString(); std::cout << "------> PERDIO CONTRA LA CASA" << std::endl;
 				}
 				//Si la suma de cartas es igual a la casa EMPATA
@@ -105,7 +111,7 @@ void Juego::verificacion(Nodo* dealer){
 void Juego::limpiarJugadoresActual(){
 	Nodo* actual = listaJugadores.getInicio();
 	//Mientras se encuentre un jugador en la lista se le limpia la mano actual
-	if(actual!=nullptr){
+	while(actual!=nullptr){
 			actual->dato->getMano()->limpiar();
 			actual = actual->next;
 	}
@@ -172,17 +178,15 @@ void Juego::jugar(){
 					}
 				}
 			}
-		}
-		//Si llegamos al lugar de la casa dentro de la listaJugadores entonces hacemos la verificacion de los jugadores contra la casa
-		else {
-			verificacion(actual);
+		}else {
+			//verificacion();//Si llegamos al lugar de la casa dentro de la listaJugadores entonces hacemos la verificacion de los jugadores contra la casa
 			std::cout << "\nDesea repetir el juego con los mismos jugadores (C)\n" <<"retornar a la pantalla inicial (S)\n" << std::endl;
 			std::cin >> opcionJuego;
 			if (opcionJuego=="C"||opcionJuego == "c") {
-				limpiarJugadoresActual();//ARREGLAR
-				baraja.barajar();//OBSERVACIONES
+				limpiarJugadoresActual();
+				baraja.barajar();
+				ingresarCartasIniciales();
 				actual = actual->next;
-				opcionJuego = "C";
 				continuidad = true;
 			}
 			else {
