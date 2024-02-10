@@ -51,11 +51,11 @@ int Mano::getPuntos(){
 	for (int i = 0; i < 9; i++) {
 		if (cartas[i] != nullptr) {
 			int valorCarta = cartas[i]->getValor();
-			if (valorCarta == 1) {
+			if (valorCarta == 1||valorCarta==11) {
 				cantidadAses++;
 				suma += 11;  // As se suma inicialmente como 11
 			}
-			else if (valorCarta >= 11) {
+			else if (valorCarta > 11) {
 				suma += 10;  // Otras cartas con valor 11 se suman como 10
 			}
 			else {
