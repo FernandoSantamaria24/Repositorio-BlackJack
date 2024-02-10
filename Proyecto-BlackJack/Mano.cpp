@@ -55,7 +55,7 @@ int Mano::getPuntos(){
 				cantidadAses++;
 				suma += 11;  // As se suma inicialmente como 11
 			}
-			else if (valorCarta == 11) {
+			else if (valorCarta >= 11) {
 				suma += 10;  // Otras cartas con valor 11 se suman como 10
 			}
 			else {
