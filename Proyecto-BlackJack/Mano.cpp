@@ -45,13 +45,31 @@ void Mano::limpiar(){
 }
 //Suma la cantidad de puntos que el usuario tiene hasta el momento
 int Mano::getPuntos(){
-	int sum = 0;
-	for (int i = 0; i < 9; i++){
-		if (cartas[i]!=nullptr) {
-			sum += cartas[i]->getValor();
+	int suma = 0;
+	int cantidadAses = 0;
+
+	for (int i = 0; i < 9; i++) {
+		if (cartas[i] != nullptr) {
+			int valorCarta = cartas[i]->getValor();
+			if (valorCarta == 1) {
+				cantidadAses++;
+				suma += 11;  // As se suma inicialmente como 11
+			}
+			else if (valorCarta == 11) {
+				suma += 10;  // Otras cartas con valor 11 se suman como 10
+			}
+			else {
+				suma += valorCarta;
+			}
 		}
 	}
-	return sum;
+	// Ajustar el valor de los Ases si la suma supera 21
+	while (cantidadAses > 0 && suma > 21) {
+		suma -= 10;  // Cambiar el valor del As de 11 a 1
+		cantidadAses--;
+	}
+
+	return suma;
 }
 //Este método nos permite retornar la cantidad de cartas que tiene cada mano
 int Mano::getCantidad(){
