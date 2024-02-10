@@ -16,6 +16,7 @@ Mazo::~Mazo(){
     }
 }
 
+
 //Método encargado de Inicializar las cartas de una partida y agregarlas al mazo de la misma partida
 void Mazo::inicializador(){
     int pos = 0;

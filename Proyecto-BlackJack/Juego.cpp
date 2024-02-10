@@ -100,7 +100,7 @@ void Juego::jugar(){
 		//Según la opcion desea se ejecuta una opción diferente en el sistema
 			if(opcionJuego == "D"||opcionJuego == "d"){
 				if (!actual->dato->sePaso()) {
-			actual->dato->pedirCarta(&baraja);
+				actual->dato->pedirCarta(&baraja);
 				}else {
 					system("cls");
 					if (actual->next != nullptr) {
@@ -140,6 +140,7 @@ void Juego::jugar(){
 				}
 			}
 		}
+		//Al llegar al dealer el juego se terminará y empezará a dar los resultados uno por uno
 		else {
 			actual = listaJugadores.getInicio()->next;
 			while(actual!=nullptr) {
@@ -164,7 +165,7 @@ void Juego::jugar(){
 						}
 					}
 					std::string next;
-					std::cout << "Siguiente Jugador  (N)\n";
+					std::cout << "Next  (N)\n";
 					std::cout << "Terminar resultados  (S)\nDigitar respuesta:";
 					std::cin >> next;
 					if (next=="N"||next=="n") {

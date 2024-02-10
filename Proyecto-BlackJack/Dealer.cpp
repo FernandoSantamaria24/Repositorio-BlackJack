@@ -13,7 +13,7 @@ Carta* Dealer::pedirCarta(Mazo* mazo){
 		Carta* nuevaCarta = mano->agregarCarta(mazo);
 		if (nuevaCarta != nullptr) {
 				mano->agregarCarta((Mazo*)&nuevaCarta);
-				return nuevaCarta;	
+				return nuevaCarta;
 		}
 	}
 	else {
