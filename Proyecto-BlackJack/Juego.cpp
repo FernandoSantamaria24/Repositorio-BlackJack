@@ -82,7 +82,7 @@ void Juego::jugar(){
 	std::cout << "----------------JUEGO BLACKJACK----------------\n" << std::endl;
 	//En cuanto se logren ingresar todos los usuarios dentro del juego inicia el juego en su totalidad
 	//En caso de no ser posible ingresar los jugadores se enviará un mensaje de error 
-	if (ingresoJugadores()!=false) {
+	if (ingresoJugadores()!=false||listaJugadores.getInicio()!=nullptr) {
 		baraja.barajar();
 		system("cls");
 		Nodo* actual = listaJugadores.getInicio()->next;
@@ -141,8 +141,8 @@ void Juego::jugar(){
 			}
 		}
 		else {
+			actual = listaJugadores.getInicio()->next;
 			while(actual!=nullptr) {
-				actual = actual->next;
 				if (listaJugadores.getInicio()->dato->getMano()->getPuntos() < 16) {
 					listaJugadores.getInicio()->dato->pedirCarta(&baraja);
 				}
@@ -164,16 +164,20 @@ void Juego::jugar(){
 						}
 					}
 					std::string next;
+					std::cout << "Siguiente Jugador  (N)\n";
+					std::cout << "Terminar resultados  (S)\nDigitar respuesta:";
+					std::cin >> next;
 					if (next=="N"||next=="n") {
-						actual = actual->next;
 						system("cls");
+						actual = actual->next;
 					}
 					else {
 						actual = nullptr;
 					}
 				}
 			}
-				std::cout << "\nDesea repetir el juego con los mismos jugadores (C)\n" << "retornar a la pantalla inicial (S)\n";
+			std::cout << "\nEl juego actual termino\n";
+				std::cout << "\nDesea repetir el juego con los mismos jugadores (C)\n" << "retornar a la pantalla inicial (S)\nRespuesta:";
 				std::cin >> opcionJuego;
 				if (opcionJuego == "C" || opcionJuego == "c") {
 					listaJugadores.limpiarManoJugadores();
@@ -187,7 +191,7 @@ void Juego::jugar(){
 						continuidad = false;
 					}
 					else {
-						std::cout << "\nLa opcion dada no es valida por lo tanto el juego acabara";
+						std::cout << "\nLa opcion dada no es valida por lo tanto el juego terminara";
 						continuidad = false;
 					}
 				}
