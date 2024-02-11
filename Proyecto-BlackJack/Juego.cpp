@@ -32,17 +32,16 @@ void Juego::ingresarCartasIniciales(){
 bool Juego::ingresoJugadores(){
 	bool respuesta = false;
 	int cantErrores = 0;
+	int cantJugadores = 0;
+	int cantIngresada = 0;
 	while(respuesta!=true&&cantErrores<3){
-		std::cout << "Ingrese la cantidad de jugadores (Maximo 7):  " << std::endl;
-		int cantJugadores = 0;
-		int cantIngresada = 0;
 		try {
+			std::cout << "Ingrese la cantidad de jugadores (Maximo 7):  " << std::endl;
 			std::cin >> cantIngresada;
 			if (std::cin.fail()) {
 				system("cls");
 				throw std::invalid_argument("Opcion invalida. Por favor, ingrese un numero.");
 			}
-		std::cin >> cantIngresada;
 	if (cantIngresada >= 1 && cantIngresada <= 7) {
 		Mano* manoD = new Mano();
 		Dealer* dealer = new Dealer("Dealer", manoD);
