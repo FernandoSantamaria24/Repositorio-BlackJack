@@ -23,8 +23,16 @@ int main() {
             break;
         case 2:
             system("cls");
-            std::cout << "CARGANDO PARTIDA...\n" << std::endl;
-            juegoNuevo.leerJuego();
+            std::string aux = "Juego.txt";
+            std::ifstream file(aux); 
+            if (file.is_open()) {
+                std::cout << "CARGANDO PARTIDA...\n" << std::endl;
+                juegoNuevo.leerJuego();
+                file.close();
+            }
+            else {
+                std::cout << "No se pudo abrir el archivo correctamente.\n";
+            }
             break;
         case 3:
             system("cls");

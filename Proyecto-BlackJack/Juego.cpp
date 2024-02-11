@@ -137,7 +137,8 @@ void Juego::jugar(){
 					if (opcionJuego == "G" || opcionJuego == "g") {
 						system("cls");
 						std::cout << "Guardando partida...\n" << std::endl;
-						guardarJuego();
+						Juego::guardarJuego(); 
+						break;
 					}
 					else {
 						if (opcionJuego=="S" || opcionJuego == "s") {
