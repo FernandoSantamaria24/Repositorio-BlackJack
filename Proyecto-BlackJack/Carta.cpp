@@ -53,7 +53,7 @@ Carta* Carta::copia()
 }
 void Carta::guardarCarta(std::ofstream& file)
 {
-	file << valor << palo << bocaAbajo;
+	file << "Carta" << '\t' << valor << '\t' << palo << '\t' << bocaAbajo << '\n';
 }
 Carta* Carta::leerCarta(std::ifstream& file)
 {

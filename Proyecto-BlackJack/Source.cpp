@@ -20,6 +20,7 @@ int main() {
         case 2:
             system("cls");
             std::cout << "CARGANDO PARTIDA...\n" << std::endl;
+            juegoNuevo.leerJuego();
             break;
         case 3:
             system("cls");
