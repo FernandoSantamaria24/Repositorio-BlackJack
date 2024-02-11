@@ -21,11 +21,13 @@ Carta* Mano::agregarCarta(Mazo* m){
 	const int limiteCartas = 9;
 	if (cant < limiteCartas) {
 		Carta* nuevaCarta = m->tomarCarta();
-
 		if (nuevaCarta != nullptr) {
 			cartas[cant] = nuevaCarta;
 			cant++;
 			return nullptr;
+		}
+		else {
+			std::cout << "No quedan cartas en el mazo\n" << std::endl;
 		}
 	}
 	else {

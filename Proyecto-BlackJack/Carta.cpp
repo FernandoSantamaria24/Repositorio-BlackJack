@@ -75,7 +75,8 @@ void Carta::toString(){
 	else {
 		if (valor>=12) {
 			std::cout <<"10";
-		}else{
+		}
+		else{
 			std::cout << valor;
 		}
 	}
