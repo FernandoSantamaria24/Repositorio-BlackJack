@@ -18,8 +18,8 @@ public:
 	bool buscarNombreJugador(std::string);
 	void borrarNodoJugador(JugadorGenerico*);
 	void limpiarManoJugadores();
-	void guardarLista();
-	void leerLista();
+	void guardarLista(std::ofstream&);
+	void leerLista(std::ifstream&);
 	bool listaVacia(); 
 };
 

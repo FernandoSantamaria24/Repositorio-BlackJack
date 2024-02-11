@@ -211,3 +211,30 @@ void Juego::jugar(){
 	}
 }
 
+void Juego::guardarJuego()
+{
+	std::ofstream file;
+	file.open("Juego.txt");
+	if (file.is_open()) {
+		return;
+	}
+	baraja.guardarMazo(file); 
+	listaJugadores.guardarLista(file); 
+
+	file.close();
+}
+
+void Juego::leerJuego()
+{
+	std::ifstream file;
+	file.open("Juego.txt");
+	if (file.is_open()) {
+		std::cout << "No se pudo abrir el archivo del juego.\n";
+		return;
+	}
+	baraja.leerMazo(file);
+	listaJugadores.leerLista(file);
+
+	file.close();
+}
+

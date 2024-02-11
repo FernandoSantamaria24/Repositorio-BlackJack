@@ -96,10 +96,9 @@ void Lista::limpiarManoJugadores(){
 			actual = actual->next;
 		}
 }
-void Lista::guardarLista()
+void Lista::guardarLista(std::ofstream& file)
 {
-	Nodo* aux = inicio; 
-	std::ofstream file; 
+	Nodo* aux = inicio;  
 	file.open("ListaJugadores.txt", std::ios::out);  
 
 	if (file.is_open()) {
@@ -110,12 +109,11 @@ void Lista::guardarLista()
 	}
 	file.close();
 }
-void Lista::leerLista()
+void Lista::leerLista(std::ifstream& file)
 {
 	//Aun falta retocar un poco mas el metodo
 	JugadorGenerico* aux = nullptr; 
 	std::string tipo;
-	std::ifstream file;
 	file.open("ListaJugadores.txt", std::ios::in); 
 
 	if (file.is_open()) {
