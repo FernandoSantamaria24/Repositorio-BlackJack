@@ -124,8 +124,8 @@ void Juego::jugar(){
 				}
 				else {
 					if (opcionJuego == "G" || opcionJuego == "g") {
-						std::cout << "Guardando partida...\n" << std::endl;
 						system("cls");
+						std::cout << "Guardando partida...\n" << std::endl;
 						guardarJuego();
 					}
 					else {
@@ -221,6 +221,7 @@ void Juego::guardarJuego()
 	}
 	baraja.guardarMazo(file); 
 	listaJugadores.guardarLista(file); 
+	std::cout << "Partida Guardada\n";
 
 	file.close();
 }
