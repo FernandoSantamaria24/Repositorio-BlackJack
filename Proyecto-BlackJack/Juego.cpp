@@ -226,13 +226,15 @@ void Juego::jugar(){
 void Juego::guardarJuego()
 {
 	std::ofstream file;
-	file.open("Juego.txt");
+	file.open("Juego.txt",std::ios::app);
+
 	if (file.is_open()) {
-		return;
+		baraja.guardarMazo(file);
+		listaJugadores.guardarLista(file);
+		std::cout<<"Partida guardada.\n";
 	}
-	baraja.guardarMazo(file); 
-	listaJugadores.guardarLista(file); 
-	std::cout << "Partida Guardada\n";
+	else
+		std::cout << "Error, no se pudo guardar.\n";
 
 	file.close();
 }
@@ -241,8 +243,9 @@ void Juego::leerJuego()
 {
 	std::ifstream file;
 	file.open("Juego.txt");
-	if (file.is_open()) {
-		std::cout << "No se pudo abrir el archivo del juego.\n";
+
+	if (!file.is_open()) {
+		std::cerr << "No se pudo abrir el archivo del juego.\n";
 		return;
 	}
 	baraja.leerMazo(file);

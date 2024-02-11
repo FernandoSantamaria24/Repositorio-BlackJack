@@ -44,7 +44,8 @@ std::string Jugador::getNickname(){
 }
 void Jugador::guardarJugador(std::ofstream& file)
 {
-	file << "Jugador: " << nickname << mano;
+	file << "Jugador: " << nickname << '\n';
+	mano->guardarMano(file); 
 }
 JugadorGenerico* Jugador::leerJugador(std::ifstream& file)
 {

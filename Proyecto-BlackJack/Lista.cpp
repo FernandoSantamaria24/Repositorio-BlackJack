@@ -99,7 +99,7 @@ void Lista::limpiarManoJugadores(){
 void Lista::guardarLista(std::ofstream& file)
 {
 	Nodo* aux = inicio;  
-	file.open("ListaJugadores.txt", std::ios::out);  
+	file.open("ListaJugadores.txt", std::ios::app);  
 
 	if (file.is_open()) {
 		while (aux != nullptr) {
@@ -110,40 +110,23 @@ void Lista::guardarLista(std::ofstream& file)
 	file.close();
 }
 void Lista::leerLista(std::ifstream& file)
-{
-	//Aun falta retocar un poco mas el metodo
-	JugadorGenerico* aux = nullptr; 
-	std::string tipo;
-	file.open("ListaJugadores.txt", std::ios::in); 
+{ 
+	std::string tipo; 
 
-	if (file.is_open()) {
-		while (!file.eof()) {
-			std::getline(file, tipo, '|');
-			if (tipo == "Jugador") {
-				aux = Jugador::leerJugador(file);
+	while (file>>tipo){
+		if (tipo == "Jugador") {
+			JugadorGenerico* jugador = Jugador::leerJugador(file);
+			if (jugador != nullptr) {
+				insertarNodoJugador(jugador);
 			}
-			if (tipo == "Dealer") {
-				aux = Dealer::leerJugador(file);
-			}
-			if (file.eof()) {
-				break;
-			}
-			if (aux != NULL) {
-				insertarNodoJugador(aux);
-			} 
 		}
-	}	
-	file.close();
-			//while (std::getline(file, buffer)) {
-			//	std::istringstream linea{ buffer };
-			//	std::string nombre;
-			//	std::getline(linea, nombre);
-
-			//	Mano* manoJugador = aux->dato->getMano()->leerMano(file);
-			//	JugadorGenerico* nuevoJugador = aux->dato->leerJugador(file)/*new Jugador(nombre, manoJugador)*/; 
-			//	insertarNodoJugador(nuevoJugador);
-			//	aux = aux->next;
-			//} 
+		else if (tipo == "Dealer") {
+			JugadorGenerico* jugadorDealer = Dealer::leerJugador(file);
+			if (jugadorDealer != nullptr) {
+				insertarNodoJugador(jugadorDealer);
+			}
+		}
+	}
 }
 //Método que nos permite saber si la lista ya tiene o no algun elemento ya creado
 bool Lista::listaVacia()

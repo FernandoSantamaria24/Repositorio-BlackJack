@@ -55,7 +55,8 @@ std::string Dealer::getNickname()
 	return nickname;
 }
 void Dealer::guardarJugador(std::ofstream& file){
-	file << "Dealer" << nickname << mano;
+	file << "Dealer" << nickname << '\n'; 
+	mano->guardarMano(file); 
 }
 JugadorGenerico* Dealer::leerJugador(std::ifstream& file)
 {
