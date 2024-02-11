@@ -83,8 +83,8 @@ bool Juego::ingresoJugadores(){
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		cantErrores++;
 	}
-	return respuesta;
 	}
+	return respuesta;
 }
 //Método Jugar encargado de toda la lógica del juego BlackJack
 void Juego::jugar(){
