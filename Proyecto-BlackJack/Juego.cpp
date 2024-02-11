@@ -32,11 +32,16 @@ void Juego::ingresarCartasIniciales(){
 bool Juego::ingresoJugadores(){
 	bool respuesta = false;
 	int cantErrores = 0;
-	baraja.barajar();
 	while(respuesta!=true&&cantErrores<3){
 		std::cout << "Ingrese la cantidad de jugadores (Maximo 7):  " << std::endl;
 		int cantJugadores = 0;
 		int cantIngresada = 0;
+		try {
+			std::cin >> cantIngresada;
+			if (std::cin.fail()) {
+				system("cls");
+				throw std::invalid_argument("Opcion invalida. Por favor, ingrese un numero.");
+			}
 		std::cin >> cantIngresada;
 	if (cantIngresada >= 1 && cantIngresada <= 7) {
 		Mano* manoD = new Mano();
@@ -71,9 +76,15 @@ bool Juego::ingresoJugadores(){
 		std::cout << "La cantidad de jugadores es invalida (Maximo 7)\n" << std::endl;
 		cantErrores++;
 		}
+	}catch (const std::invalid_argument& e) {
+		std::cerr << "Error: " << e.what() << std::endl;
+		// Limpiar el estado de error de std::cin y descartar la entrada incorrecta
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		cantErrores++;
 	}
-	std::cout << "La cantidad de jugadores es invalida (Maximo 7)\n" << std::endl;
 	return respuesta;
+	}
 }
 //Método Jugar encargado de toda la lógica del juego BlackJack
 void Juego::jugar(){
