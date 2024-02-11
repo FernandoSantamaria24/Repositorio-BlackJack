@@ -32,12 +32,12 @@ void Mazo::inicializador(){
 }
 //Método encarga de revolver las cartas en cada inicio de juego
 void Mazo::barajar(){
-    Carta* tC[tam]; //vector para metodo burbuja
+    Carta* tC[tam]; //vector  burbuja
     int contRand = 52, numAl;
 
     for (int i = 0; i < tam; i++) { 
 
-        numAl = rand() % contRand; //aleatorio para revolver
+        numAl = rand() % contRand; //rand revolver
 
         tC[i] = carta[numAl]; 
 
@@ -45,7 +45,7 @@ void Mazo::barajar(){
             carta[j] = carta[j + 1];
 
         }
-        carta[contRand - 1] = new Carta(); //elimina (o reinicia mejor dicho) la ultima carta del vector, ya que ahora que todas se movieron, la ultima sobra
+        carta[contRand - 1] = new Carta(); // reinicia  la ultima carta del vector
 
         contRand--;
     }
