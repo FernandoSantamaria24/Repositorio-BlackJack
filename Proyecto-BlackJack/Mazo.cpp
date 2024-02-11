@@ -34,23 +34,28 @@ void Mazo::inicializador(){
 }
 //Método encarga de revolver las cartas en cada inicio de juego
 void Mazo::barajar(){
-    int contRand = 52;
+    Carta* tC[tam]; //vector para metodo burbuja
+    int contRand = 52, numAl;
 
-    // Vector auxiliar de punteros a Carta
-    Carta* tC[tam];
-    for (int i = 0; i < tam; i++) {
-        tC[i] = carta[i];
+    for (int i = 0; i < tam; i++) { 
+
+        numAl = rand() % contRand; //aleatorio para revolver
+
+        tC[i] = carta[numAl]; 
+
+        for (int j = numAl; j < contRand - 1; j++) {
+            carta[j] = carta[j + 1];
+
+        }
+        carta[contRand - 1] = new Carta(); //elimina (o reinicia mejor dicho) la ultima carta del vector, ya que ahora que todas se movieron, la ultima sobra
+
+        contRand--;
     }
 
-    // Algoritmo de Fisher-Yates para barajar
-    for (int i = tam - 1; i > 0; i--) {
-        int j = rand() % (i + 1);
-        std::swap(tC[i], tC[j]);
-    }
+    for (int i = 0; i < tam; i++) { 
 
-    // Copiar las cartas barajadas al mazo original
-    for (int i = 0; i < tam; i++) {
         carta[i] = tC[i];
+
     }
 }
 //Método de tomar una carta del mazo para darsela a un jugador

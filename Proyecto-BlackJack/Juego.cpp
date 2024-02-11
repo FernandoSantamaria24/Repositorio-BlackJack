@@ -5,7 +5,6 @@
 //Constructor sin parámetros de la clase Juego
 Juego::Juego(){
 	baraja.inicializador();
-	baraja.barajar();
 }
 //Destructor de la clase Juego
 Juego::~Juego(){}
@@ -33,6 +32,7 @@ void Juego::ingresarCartasIniciales(){
 bool Juego::ingresoJugadores(){
 	bool respuesta = false;
 	int cantErrores = 0;
+	baraja.barajar();
 	while(respuesta!=true&&cantErrores<3){
 		std::cout << "Ingrese la cantidad de jugadores (Maximo 7):  " << std::endl;
 		int cantJugadores = 0;

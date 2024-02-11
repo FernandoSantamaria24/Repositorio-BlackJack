@@ -125,12 +125,7 @@ Mano* Mano::leerMano(std::ifstream& file)
 //Método para mostrar las cartas de la mano para cada jugador
 void Mano::toString(){
 	for (int i = 0; i < cant; i++){
-		if(cartas[i]->getBocaAbajo()==true) {
 			cartas[i]->toString();
 			std::cout << "  ";
-		}
-		else {
-			std::cout << "|CARTA OCULTA|";
-		}
 	}
 }
