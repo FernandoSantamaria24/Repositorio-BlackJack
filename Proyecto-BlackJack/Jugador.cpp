@@ -42,16 +42,18 @@ bool Jugador::sePaso(){
 std::string Jugador::getNickname(){
 	return nickname;
 }
+//Metodo utilizado para guardar al jugador
 void Jugador::guardarJugador(std::ofstream& file)
 {
 	file << "Jugador: " << nickname << '\n';
 	mano->guardarMano(file); 
 }
+//Metodo utilizado para leer al jugador
 JugadorGenerico* Jugador::leerJugador(std::ifstream& file)
 {
 	std::string nick;
 	file >> nick;
-
+	//Se crea una mano con los valores ya guardados y se crea un nuevo jugador con los valores de la mano guardada
 	Mano* manoJugador = Mano::leerMano(file);
 	Jugador* jugadorNuevo = new Jugador(nick, manoJugador);  
 

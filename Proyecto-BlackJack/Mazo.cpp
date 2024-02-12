@@ -90,8 +90,10 @@ Mazo* Mazo::copia()
 
     return mazoCopia; 
 }
+//Metodo utilizado para guardar mazo
 void Mazo::guardarMazo(std::ofstream& file)
 {
+    //Se recorre el vector de mazo para ir guardando cada carta del mazo
     for (int i = 0;i < tam;i++) {
         if (carta[i]!=nullptr) {
             carta[i]->guardarCarta(file);
@@ -99,10 +101,11 @@ void Mazo::guardarMazo(std::ofstream& file)
 
     }
 }
+//Metodo utilizado para leer mazo
 Mazo* Mazo::leerMazo(std::ifstream& file)
 {
     Mazo* nuevoMazo = new Mazo();
-
+    //Se recorre el vector de mazo para ir leyendo cada carta del mazo
     for (int i = 0;i < tam;i++) {
         Carta* nuevaCarta = Carta::leerCarta(file);
         if (nuevaCarta != nullptr) {

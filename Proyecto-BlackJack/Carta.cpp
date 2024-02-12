@@ -51,10 +51,12 @@ Carta* Carta::copia()
 {
 	return new Carta(valor, palo, bocaAbajo);
 }
+//Metodo que guarda la carta
 void Carta::guardarCarta(std::ofstream& file)
 {
 	file << "Carta" << '\t' << valor << '\t' << palo << '\t' << bocaAbajo << '\n';
 }
+//Metodo utilizada para leer la carta
 Carta* Carta::leerCarta(std::ifstream& file)
 {
 	int val, pal;

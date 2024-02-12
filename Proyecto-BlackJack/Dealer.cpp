@@ -54,15 +54,17 @@ std::string Dealer::getNickname()
 {
 	return nickname;
 }
+//Metodo utilizado para guardar al dealer
 void Dealer::guardarJugador(std::ofstream& file){
 	file << "Dealer" << nickname << '\n'; 
 	mano->guardarMano(file); 
 }
+//Metodo utilizado para leer al dealer
 JugadorGenerico* Dealer::leerJugador(std::ifstream& file)
 {
 	std::string nick; 
 	file >> nick; 
-
+	//Se crea una mano con los valores ya guardados y se crea un nuevo dealer con los valores de la mano guardada
 	Mano* manoJugador = Mano::leerMano(file); 
 	Dealer* nuevoDealer = new Dealer(nick, manoJugador);  
 

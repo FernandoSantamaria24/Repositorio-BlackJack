@@ -89,10 +89,13 @@ bool Juego::ingresoJugadores(){
 void Juego::jugar(){
 	std::string opcionJuego = "C";
 	bool continuidad = true;
+	if(listaJugadores.getInicio()==nullptr){
+		ingresoJugadores();
+	}
 	std::cout << "----------------JUEGO BLACKJACK----------------\n" << std::endl;
 	//En cuanto se logren ingresar todos los usuarios dentro del juego inicia el juego en su totalidad
 	//En caso de no ser posible ingresar los jugadores se enviará un mensaje de error 
-	if (ingresoJugadores()!=false||listaJugadores.getInicio()!=nullptr) {
+	if (listaJugadores.getInicio() != nullptr) {
 		baraja.barajar();
 		system("cls");
 		Nodo* actual = listaJugadores.getInicio()->next;
@@ -154,7 +157,7 @@ void Juego::jugar(){
 		//Al llegar al dealer el juego se terminará y empezará a dar los resultados uno por uno
 		else {
 			actual = listaJugadores.getInicio()->next;
-			while(actual!=nullptr) {
+			while (actual != nullptr) {
 				if (listaJugadores.getInicio()->dato->getMano()->getPuntos() < 16) {
 					listaJugadores.getInicio()->dato->pedirCarta(&baraja);
 				}
@@ -179,7 +182,7 @@ void Juego::jugar(){
 					std::cout << "Next  (N)\n";
 					std::cout << "Terminar resultados  (S)\nDigitar respuesta:";
 					std::cin >> next;
-					if (next=="N"||next=="n") {
+					if (next == "N" || next == "n") {
 						system("cls");
 						actual = actual->next;
 					}
@@ -189,28 +192,25 @@ void Juego::jugar(){
 				}
 			}
 			std::cout << "\nEl juego actual termino\n";
-				std::cout << "\nDesea repetir el juego con los mismos jugadores (C)\n" << "retornar a la pantalla inicial (S)\nRespuesta:";
-				std::cin >> opcionJuego;
-				if (opcionJuego == "C" || opcionJuego == "c") {
-					listaJugadores.limpiarManoJugadores();
-					baraja.barajar();//Revuelve las cartas 
-					ingresarCartasIniciales();//Ingresa cartas (2) a cada jugador
-					actual = listaJugadores.getInicio()->next;
-					continuidad = true;
+			std::cout << "\nDesea repetir el juego con los mismos jugadores (C)\n" << "retornar a la pantalla inicial (S)\nRespuesta:";
+			std::cin >> opcionJuego;
+			if (opcionJuego == "C" || opcionJuego == "c") {
+				listaJugadores.limpiarManoJugadores();
+				baraja.barajar();//Revuelve las cartas 
+				ingresarCartasIniciales();//Ingresa cartas (2) a cada jugador
+				actual = listaJugadores.getInicio()->next;
+				continuidad = true;
+			}
+			else {
+				if (opcionJuego == "S" || opcionJuego == "s") {
+					continuidad = false;
 				}
 				else {
-					if (opcionJuego == "S" || opcionJuego == "s") {
-						continuidad = false;
-					}
-					else {
-						std::cout << "\nLa opcion dada no es valida por lo tanto el juego terminara";
-						continuidad = false;
-					}
+					std::cout << "\nLa opcion dada no es valida por lo tanto el juego terminara";
+					continuidad = false;
 				}
-			
-		
-			
-			}	
+			}
+		}
 		}
 		system("cls");
 		std::cout << "          EL JUEGO LLEGO A SU FINAL\n" << std::endl;
@@ -221,9 +221,10 @@ void Juego::jugar(){
 		std::cout << "El ingreso de jugadores tuvo un error (Intente de nuevo)\n" << std::endl;
 	}
 }
-
+//Metodo utilizado para guardar el juego
 void Juego::guardarJuego()
 {
+	//En este metodo se va a guardar la baraja y la lista de los jugadores
 	std::ofstream file;
 	file.open("Juego.txt",std::ios::app);
 
@@ -237,19 +238,20 @@ void Juego::guardarJuego()
 
 	file.close();
 }
-
+//Metodo para leer el juego
 void Juego::leerJuego()
 {
+	//Se carga el mazo y se carga el leer de la lista
 	std::ifstream file;
 	file.open("Juego.txt");
 
-	if (!file.is_open()) {
-		std::cerr << "No se pudo abrir el archivo del juego.\n";
-		return;
+	if (file.is_open()) {
+		baraja.leerMazo(file);
+		listaJugadores.leerLista(file);
 	}
-	baraja.leerMazo(file);
-	listaJugadores.leerLista(file);
-
+	else {
+		std::cout << "No se pudo abrir el archivo del juego.\n";
+	}
 	file.close();
 }
 

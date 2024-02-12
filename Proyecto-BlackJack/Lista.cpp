@@ -96,23 +96,30 @@ void Lista::limpiarManoJugadores(){
 			actual = actual->next;
 		}
 }
+//Metodo para guardar la lista de jugadores
 void Lista::guardarLista(std::ofstream& file)
 {
-	Nodo* aux = inicio;  
-	file.open("ListaJugadores.txt", std::ios::app);  
-
-	if (file.is_open()) {
-		while (aux != nullptr) {
-			aux->dato->guardarJugador(file);
-			aux = aux->next;
+	//Se hace una verificacion del tipo de jugador que va a llegar, y dependiendo del tipo se guarda
+	//en jugador o dealer
+	Nodo* aux = inicio;
+	while (aux!=nullptr) {
+		JugadorGenerico* jugador = aux->dato;
+		if (dynamic_cast<Jugador*>(jugador)) {
+			file << "Jugador\n";
+			jugador->guardarJugador(file);
 		}
+		else if (dynamic_cast<Dealer*>(jugador)) {
+			file << "Dealer\n";
+			jugador->guardarJugador(file);
+		}
+		aux = aux->next;
 	}
-	file.close();
 }
+//Metodo utilizado para leer la lista de jugadores
 void Lista::leerLista(std::ifstream& file)
 { 
+	//En este metodo se utiliza la variable para verificar el tipo a leer, ya sea jugador o dealer
 	std::string tipo; 
-
 	while (file>>tipo){
 		if (tipo == "Jugador") {
 			JugadorGenerico* jugador = Jugador::leerJugador(file);

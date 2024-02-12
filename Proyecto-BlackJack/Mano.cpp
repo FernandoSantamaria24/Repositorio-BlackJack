@@ -102,7 +102,7 @@ Mano* Mano::copia()
 }
 void Mano::guardarMano(std::ofstream& file)
 {
-	file << cant << "\n";
+	file << "Mano" << '\t' << cant << "\n";
 
 	for (int i = 0;i < cant;i++) {
 		cartas[i]->guardarCarta(file);
