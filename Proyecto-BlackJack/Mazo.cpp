@@ -93,6 +93,7 @@ Mazo* Mazo::copia()
 void Mazo::guardarMazo(std::ofstream& file)
 {
     for (int i = 0;i < tam;i++) {
+
         carta[i]->guardarCarta(file);
     }
 }
