@@ -28,6 +28,7 @@ int main() {
                     if (file.is_open()) {
                         std::cout << "CARGANDO PARTIDA...\n" << std::endl;
                         juegoNuevo.leerJuego();
+                        juegoNuevo.jugar();
                         file.close();
                     }
                     else {
